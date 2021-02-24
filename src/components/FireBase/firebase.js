@@ -1,5 +1,5 @@
 import app from 'firebase/app';
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyCGrXCXvco4SHt1GRP1InlRfGPR7mdXfdQ",
     authDomain: "waterly-5f5de.firebaseapp.com",
     projectId: "waterly-5f5de",
