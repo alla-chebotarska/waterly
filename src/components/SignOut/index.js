@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { FirebaseContext } from '../FireBase';
 
 export default function SignOut() {
     return (
-        <div>
-            <h1>SignOut</h1>
-        </div>
+            <FirebaseContext.Consumer>
+                {firebase => <button onClick={() => firebase.signOutWithGoogle()}>Sign out</button>}
+            </FirebaseContext.Consumer>
     )
 }

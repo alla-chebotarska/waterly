@@ -1,9 +1,13 @@
 import React from 'react'
+import { FirebaseContext } from '../FireBase';
 
 export default function SignIn() {
     return (
         <div>
-            <h1>SignIn</h1>
+            <p>Please SignIn</p>
+            <FirebaseContext.Consumer>
+                {firebase => <button onClick={() => firebase.signInWithGoogle()}>Sign in with Google</button>}
+            </FirebaseContext.Consumer>
         </div>
     )
 }
