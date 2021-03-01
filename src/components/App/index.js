@@ -26,11 +26,9 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
         <div>
           <Content authUser={this.state.authUser}/>
         </div>
-      </Router>
     );
   }
 }

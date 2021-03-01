@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import * as ROUTES from '../../constants/routes';
-import { FirebaseContext } from '../FireBase';
+import { BrowserRouter as Router } from "react-router-dom";
+import MainPage from '../MainPage';
 import SignIn from '../SignIn';
-import Landing from '../Landing/index';
 
 const Content = ({ authUser }) => (
-    <div>{authUser ? <ContentAuth /> : <ContentNonAuth />}</div>
+    <div>
+        {authUser ? <ContentAuth /> : <ContentNonAuth />}
+    </div>
 )
 
 const ContentAuth = () => (
-    <Landing />
+    <Router>
+        <MainPage />
+    </Router>
 );
 
 const ContentNonAuth = () => (
