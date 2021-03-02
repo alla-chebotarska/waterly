@@ -11,6 +11,9 @@ export default function Navigation() {
             <li>
                 <Link to={ROUTES.GARDEN}>Garden</Link>
             </li>
+            <li>
+                <Link to={ROUTES.SETTINGS}>Settings</Link>
+            </li>
         </ul>
     )
 }

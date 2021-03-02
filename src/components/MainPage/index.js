@@ -5,6 +5,7 @@ import Garden from '../Garden';
 import Header from '../Header';
 import ToDoList from '../ToDoList';
 import AddPlant from '../AddPlant';
+import Settings from '../Settings';
 
 export default function MainPage() {
     return (
@@ -12,6 +13,7 @@ export default function MainPage() {
             <Header />
             <Route exact path={ROUTES.ToDoList} component={ToDoList} />
             <Route path={ROUTES.GARDEN} component={Garden} />
+            <Route path={ROUTES.SETTINGS} component={Settings} />
             <Route path={ROUTES.ADD_PLANT} component={AddPlant} />
         </div>
     )

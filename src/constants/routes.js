@@ -5,3 +5,4 @@ export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const GARDEN = '/garden';
 export const ADD_PLANT = '/add_plant';
+export const SETTINGS ='/settings';
