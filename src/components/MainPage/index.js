@@ -11,7 +11,7 @@ export default function MainPage() {
     return (
         <div>
             <Header />
-            <Route exact path={ROUTES.ToDoList} component={ToDoList} />
+            <Route exact path={ROUTES.TODOLIST} component={ToDoList} />
             <Route path={ROUTES.GARDEN} component={Garden} />
             <Route path={ROUTES.SETTINGS} component={Settings} />
             <Route path={ROUTES.ADD_PLANT} component={AddPlant} />
