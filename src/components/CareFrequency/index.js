@@ -34,7 +34,6 @@ export default function CareFrequency(props) {
                     <MenuItem value={25}>25</MenuItem>
                 </Select>
             </FormControl>
-            <Divider />
         </div>
     )
 }

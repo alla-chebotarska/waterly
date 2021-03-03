@@ -12,13 +12,16 @@ export default class Care extends Component {
                 <ToggleButton
                     checked={this.props.isActive}
                     onChange={this.props.onActiveChange} />
-                {this.props.isActive ?
-                    <div>
+                {this.props.isActive
+                    ? <div>
                         <CareFrequency
                             frequency={this.props.frequency}
                             onFrequencySelected={this.props.onFrequencySelected} />
-                        <LastCareCalendar />
-                    </div> : <div></div>}
+                        <LastCareCalendar
+                            lastCare={this.props.lastCare}
+                            onLastCareChanged={this.props.onLastCareChanged} />
+                    </div>
+                    : <div></div>}
             </div>
         )
     }
