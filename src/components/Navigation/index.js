@@ -2,14 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import SignOut from '../SignOut';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import "./navigation.css";
 
 export default function Navigation() {
     return (
-        <ul class='navigation'>
+        <ul className='navigation'>
             <li>
                 <Link to={ROUTES.TODOLIST}>Waterly</Link>
             </li>

@@ -1,10 +1,10 @@
-import React from 'react';
+import Divider from '@material-ui/core/Divider';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export default function CareType() {
+export default function DaySelector() {
     const classes = useStyles();
     const [days, setDays] = React.useState('');
 
@@ -39,8 +39,6 @@ export default function CareType() {
                     </Select>
                 </FormControl>
                 <Divider />
-                <h5>Last care</h5>
-                <input type="date" />
         </div>
     )
 }

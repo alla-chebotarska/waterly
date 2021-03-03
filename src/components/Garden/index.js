@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
-    Route,
     Link
 } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-import AddPlant from '../AddPlant';
 
 
 export default function Garden() {

@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-} from 'react-router-dom';
-
 import Content from '../Content';
 
-
 class App extends Component {
-
   constructor(props) {
     super(props);
 
