@@ -3,42 +3,51 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
+import React, { Component } from 'react';
+import './daySelector.css';
 
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-  }));
+export default class DaySelector extends Component {
+    constructor(){
+        super();
+        this.state = {
+            frequency: 1,
+        }
+    }
 
-
-export default function DaySelector() {
-    const classes = useStyles();
-    const [days, setDays] = React.useState('');
-
-    const handleChange = (event) => {
-        setDays(event.target.value);
+    handleChange = (event) => {
+        this.setState({
+            frequency: event.target.value,
+        })
     };
 
-    let wateringPeriod = 12;
-    return (
+    render() {
+       return (
         <div>
-            <p>Every {wateringPeriod}d</p>
-                <FormControl className={classes.formControl}>
+            <p>Every {this.state.frequency}d</p>
+                <FormControl className="formControl">
                     <InputLabel>Days</InputLabel>
                     <Select
-                        value={days}
-                        onChange={handleChange}
+                       value={this.state.frequency}
+                        onChange={this.handleChange}
                     >
-                        <MenuItem value={1}>One</MenuItem>
-                        <MenuItem value={2}>Two</MenuItem>
-                        <MenuItem value={3}>Three</MenuItem>
-                        <MenuItem value={4}>Four</MenuItem>
+                        <MenuItem value={1}>1</MenuItem>
+                        <MenuItem value={2}>2</MenuItem>
+                        <MenuItem value={3}>3</MenuItem>
+                        <MenuItem value={4}>4</MenuItem>
+                        <MenuItem value={5}>5</MenuItem>
+                        <MenuItem value={6}>6</MenuItem>
+                        <MenuItem value={7}>7</MenuItem>
+                        <MenuItem value={8}>8</MenuItem>
+                        <MenuItem value={9}>9</MenuItem>
+                        <MenuItem value={10}>10</MenuItem>
+                        <MenuItem value={15}>15</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
                     </Select>
                 </FormControl>
                 <Divider />
         </div>
-    )
+    ) 
+    }
+    
 }

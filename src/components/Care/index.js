@@ -5,25 +5,12 @@ import LastCareCalendar from '../LastCareCalendar';
 
 export default class Care extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            isActive: true,
-        }
-    }
-
-    onToggleChange = (checked) => {
-        this.setState({
-            isActive: checked,
-        })
-    }
-
     render() {
         return (
             <div>
                 <h5>{this.props.title}</h5>
-                <ToggleButton active={this.state.isActive} onChange={this.onToggleChange}/>
-                {this.state.isActive ?
+                <ToggleButton checked={this.props.isActive} onChange={this.props.onActiveChange}/>
+                {this.props.isActive ?
                     <div>
                         <DaySelector />
                         <LastCareCalendar />

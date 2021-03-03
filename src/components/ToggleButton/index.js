@@ -6,7 +6,7 @@ export default function ToggleButton(props) {
     return (
         <div>
             <FormControlLabel
-                control={<Switch checked={props.active} onChange={(event) => {props.onChange(event.target.checked) }} />}
+                control={<Switch checked={props.checked} onChange={(event) => {props.onChange(event.target.checked) }} />}
             />
         </div>
     )
