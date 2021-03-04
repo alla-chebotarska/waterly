@@ -8,8 +8,8 @@ export default class Care extends Component {
     render() {
         return (
             <div>
-                <h5>{this.props.title}</h5>
                 <ToggleButton
+                    title={this.props.title}
                     checked={this.props.isActive}
                     onChange={this.props.onActiveChange} />
                 {this.props.isActive
