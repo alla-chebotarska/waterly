@@ -1,7 +1,7 @@
-import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react';
 import Care from '../Care';
+import PlantImage from '../PlantImage';
 import './addPlant.css';
 
 export default class AddPlant extends Component {
@@ -23,7 +23,7 @@ export default class AddPlant extends Component {
 
     currentDate = new Date().toJSON().slice(0, 10);
 
-    onPlantNameChanged =(name) => {
+    onPlantNameChanged = (name) => {
         this.setState({
             plantName: name,
         })
@@ -49,12 +49,16 @@ export default class AddPlant extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Add Plant</h3>
-                <form>
-                    <TextField
-                        label="Plant name"
-                        onInput={(event) => this.onPlantNameChanged(event.target.value)} />
+            <div className="add-plant-container">
+                <h3 className="page-header">Add Plant</h3>
+                <div className='plant-image'>
+                    <PlantImage />
+                </div>
+                <TextField
+                    label="Plant name"
+                    onInput={(event) => this.onPlantNameChanged(event.target.value)}
+                    className="plant-name" />
+                <div className='watering care'>
                     <Care
                         title={"Watering"}
                         isActive={this.state.watering}
@@ -62,7 +66,10 @@ export default class AddPlant extends Component {
                         frequency={this.state.wateringFrequency}
                         onFrequencySelected={(frequency) => this.onFrequencySelected("wateringFrequency", frequency)}
                         lastCare={this.state.lastWatering}
-                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastWatering", lastCare)} />
+                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastWatering", lastCare)}
+                    />
+                </div>
+                <div className='spraying care'>
                     <Care
                         title={"Spraying"}
                         isActive={this.state.spraying}
@@ -70,7 +77,10 @@ export default class AddPlant extends Component {
                         frequency={this.state.sprayingFrequency}
                         onFrequencySelected={(frequency) => this.onFrequencySelected("sprayingFrequency", frequency)}
                         lastCare={this.state.lastSpraying}
-                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastSpraying", lastCare)} />
+                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastSpraying", lastCare)}
+                    />
+                </div>
+                <div className='fertilizing care'>
                     <Care
                         title={"Fertilizing"}
                         isActive={this.state.fertilizing}
@@ -78,10 +88,16 @@ export default class AddPlant extends Component {
                         frequency={this.state.fertilizingFrequency}
                         onFrequencySelected={(frequency) => this.onFrequencySelected("fertilizingFrequency", frequency)}
                         lastCare={this.state.lastFertilizing}
-                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastFertilizing", lastCare)} />
-                    <Divider />
-                    <input type="submit" value="Save" id="saveBtn" />
-                </form>
+                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastFertilizing", lastCare)}
+                    />
+                </div>
+                <div  className='plant-save'>
+                <input
+                    type="submit"
+                    value="Save"
+                    id="saveBtn"
+                    />
+                </div>
             </div>
         )
     }

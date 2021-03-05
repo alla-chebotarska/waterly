@@ -14,9 +14,6 @@ export default function CareFrequency(props) {
                 <InputLabel>Days</InputLabel>
                 <Select
                     value={props.frequency}
-                    //value={this.state.frequency}
-                    // onChange={this.handleChange}
-                    //frequency={this.props.frequency}
                     onChange={(event) => { props.onFrequencySelected(event.target.value) }}
                 >
                     <MenuItem value={1}>1</MenuItem>

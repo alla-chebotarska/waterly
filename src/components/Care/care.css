@@ -1,0 +1,8 @@
+.care-container {
+    display: grid;
+    padding: 5%;
+}
+
+.care-toggle-btn {
+    text-align: center;
+}
