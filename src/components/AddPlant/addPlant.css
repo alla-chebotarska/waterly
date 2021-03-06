@@ -5,6 +5,7 @@
     grid-template-areas: 
         'pageHeader'
         'plantImage'
+        'popup'
         'plantName'
         'watering'
         'spraying'
@@ -20,6 +21,11 @@
 
 .plant-image {
     grid-area: plantImage;
+    text-align: center;
+}
+
+.popup {
+    grid-area: popup;
     text-align: center;
 }
 
@@ -69,6 +75,7 @@
         grid-template-areas: 
             'pageHeader pageHeader pageHeader '
             'plantImage plantImage plantImage'
+            'popup popup popup'
             'plantName plantName plantName'
             'watering  spraying fertilizing'
             'plantSave plantSave plantSave';

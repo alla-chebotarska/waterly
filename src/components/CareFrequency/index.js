@@ -1,9 +1,8 @@
-import Divider from '@material-ui/core/Divider';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import React, { Component } from 'react';
+import React from 'react';
 import './CareFrequency.css';
 
 export default function CareFrequency(props) {

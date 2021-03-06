@@ -3,9 +3,14 @@ import plant from '../../plants/plant.svg';
 import './plantImage.css';
 
 export default function PlantImage() {
+
+   const onPlantImgClick = () => {
+        console.log("Plant")
+    }
+
     return (
-        <div>
-            <img src={plant} alt="description"></img>
+        <div onClick={() => onPlantImgClick()}>
+            <img src={plant} alt="selected plant"></img>
         </div>
     )
 }

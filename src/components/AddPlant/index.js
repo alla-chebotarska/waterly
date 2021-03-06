@@ -2,6 +2,7 @@ import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react';
 import Care from '../Care';
 import PlantImage from '../PlantImage';
+import Popup from '../Popup'
 import './addPlant.css';
 
 export default class AddPlant extends Component {
@@ -54,6 +55,9 @@ export default class AddPlant extends Component {
                 <div className='plant-image'>
                     <PlantImage />
                 </div>
+                <div className='popup'>
+                    <Popup />
+                </div>
                 <TextField
                     label="Plant name"
                     onInput={(event) => this.onPlantNameChanged(event.target.value)}
@@ -91,11 +95,11 @@ export default class AddPlant extends Component {
                         onLastCareChanged={(lastCare) => this.onLastCareChanged("lastFertilizing", lastCare)}
                     />
                 </div>
-                <div  className='plant-save'>
-                <input
-                    type="submit"
-                    value="Save"
-                    id="saveBtn"
+                <div className='plant-save'>
+                    <input
+                        type="submit"
+                        value="Save"
+                        id="saveBtn"
                     />
                 </div>
             </div>
