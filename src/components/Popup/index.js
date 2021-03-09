@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import PlantGalery from '../PlantGalery';
-import './popup.css'
+import MyButton from '../MyButton';
 
 export default function Popup(props) {
     const [show, setShow] = useState(false);
@@ -11,9 +11,9 @@ export default function Popup(props) {
 
     return (
         <div>
-            <button  onClick={handleShow} className='plant-galery-btn save'>
-                Click here to change plant picture
-            </button>
+            <MyButton  
+            onClick={handleShow} 
+            value='Click here to change plant picture'/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Pick the plant</Modal.Title>
@@ -22,12 +22,9 @@ export default function Popup(props) {
                     <PlantGalery onImgClick={props.onImgClick}/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className='plant-galery-btn' onClick={handleClose}>
-                        Close
-                    </button>
-                    <button className='plant-galery-btn save' onClick={handleClose}>
-                        Save 
-                    </button>
+                    <MyButton 
+                    onClick={handleClose}
+                    value='Save'/>
                 </Modal.Footer>
             </Modal>
         </div>

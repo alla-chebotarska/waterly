@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Care from '../Care';
 import PlantImage from '../PlantImage';
 import Popup from '../Popup';
+import MyButton from '../MyButton';
 import './addPlant.css';
 
 export default class AddPlant extends Component {
@@ -29,7 +30,6 @@ export default class AddPlant extends Component {
         this.setState({
             plantIconId: imageId,
         })
-        console.log(imageId);
     }
 
     onPlantNameChanged = (name) => {
@@ -106,11 +106,7 @@ export default class AddPlant extends Component {
                     />
                 </div>
                 <div className='plant-save'>
-                    <input
-                        type="submit"
-                        value="Save"
-                        id="saveBtn"
-                    />
+                    <MyButton value="Save" />
                 </div>
             </div>
         )

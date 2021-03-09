@@ -1,4 +1,5 @@
-.plant-galery-btn {
+.my-btn {
+    background-color: #1FC49F;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -9,12 +10,4 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
-}
-
-.save {
-    background-color: #1FC49F;
-}
-
-.close {
-    background-color: red;
 }
