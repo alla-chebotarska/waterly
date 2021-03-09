@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import PlantGalery from '../PlantGalery';
 import './popup.css'
 
-export default function Popup() {
+export default function Popup(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -19,7 +19,7 @@ export default function Popup() {
                     <Modal.Title>Pick the plant</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <PlantGalery/>
+                    <PlantGalery onImgClick={props.onImgClick}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <button className='plant-galery-btn' onClick={handleClose}>

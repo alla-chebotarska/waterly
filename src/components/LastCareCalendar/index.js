@@ -9,7 +9,8 @@ export default function LastCareCalendar(props) {
                 className='last-care-calendar'
                 type="date"
                 value={props.lastCare}
-                onChange={(event) => props.onLastCareChanged(event.target.value)} />
+                onChange={(event) => props.onLastCareChanged(event.target.value)} 
+               />
         </p>
     )
 }

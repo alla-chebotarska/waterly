@@ -2,7 +2,7 @@ import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react';
 import Care from '../Care';
 import PlantImage from '../PlantImage';
-import Popup from '../Popup'
+import Popup from '../Popup';
 import './addPlant.css';
 
 export default class AddPlant extends Component {
@@ -10,6 +10,7 @@ export default class AddPlant extends Component {
         super(props);
         this.state = {
             plantName: "",
+            plantIconId: "icon1",
             watering: false,
             spraying: false,
             fertilizing: false,
@@ -23,6 +24,13 @@ export default class AddPlant extends Component {
     }
 
     currentDate = new Date().toJSON().slice(0, 10);
+
+    onImgClick = (imageId) => {
+        this.setState({
+            plantIconId: imageId,
+        })
+        console.log(imageId);
+    }
 
     onPlantNameChanged = (name) => {
         this.setState({
@@ -53,10 +61,12 @@ export default class AddPlant extends Component {
             <div className="add-plant-container">
                 <h3 className="page-header">Add Plant</h3>
                 <div className='plant-image'>
-                    <PlantImage />
+                    <PlantImage
+                        plantId={this.state.plantIconId} />
                 </div>
                 <div className='popup'>
-                    <Popup />
+                    <Popup 
+                    onImgClick={(imageId) => this.onImgClick(imageId)}/>
                 </div>
                 <TextField
                     label="Plant name"

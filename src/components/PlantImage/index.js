@@ -1,16 +1,29 @@
 import React from 'react';
+import cactus1 from '../../plants/cactus1.svg';
+import cactus from '../../plants/cactus.svg';
+import plant1 from '../../plants/plant1.svg';
 import plant from '../../plants/plant.svg';
+import flower from '../../plants/flower.svg';
 import './plantImage.css';
 
-export default function PlantImage() {
+const plantImages = new Map([["icon1", cactus], ["icon2", cactus1], ["icon3", plant1], ["icon4", plant], ["icon5", flower]]);
+export const plantImagesArray = Array.from(plantImages.entries()).map(arr => { return {
+    id: arr[0], 
+    src: arr[1]}
+});
 
-   const onPlantImgClick = () => {
-        console.log("Plant")
+export default function PlantImage(props) {
+
+    let img = plantImages.get(props.plantId);
+    if(!img) {
+        img = flower;
     }
-
     return (
-        <div onClick={() => onPlantImgClick()}>
-            <img src={plant} alt="selected plant"></img>
+        <div>
+            <img
+                src={img}
+                alt="selected plant"
+                ></img>
         </div>
     )
 }
