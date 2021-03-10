@@ -1,6 +1,5 @@
 .add-plant-container {
     display: grid;
-    padding: 0 5%;
     gap: 15px;
     grid-template-areas: 
         'pageHeader'

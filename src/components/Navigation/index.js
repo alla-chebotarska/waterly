@@ -5,6 +5,7 @@ import SignOut from '../SignOut';
 import "./navigation.css";
 
 export default function Navigation() {
+
     return (
         <ul className='navigation'>
             <li>

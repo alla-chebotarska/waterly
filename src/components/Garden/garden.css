@@ -1,0 +1,27 @@
+.garden-card-container{
+    display: grid;
+    gap: 15px;
+}
+
+.garden-header{
+    text-align: center;
+}
+
+
+@media (min-width: 768px){
+    .garden-card-container{
+        grid-template-columns: auto auto ;
+    }
+}
+
+@media (min-width: 992px){
+    .garden-card-container{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (min-width: 1200px){
+    .garden-card-container{
+        grid-template-columns: auto auto auto auto;
+    }
+}
