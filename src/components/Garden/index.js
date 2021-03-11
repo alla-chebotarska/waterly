@@ -7,7 +7,8 @@ import PlantCard from '../PlantCard';
 import './garden.css';
 
 
-export default function Garden() {
+export default function Garden(props) {
+    let plantCards = props.plants.map(plant => <div key={plant.id} className='garden-card'><PlantCard plant={plant}/></div>);
     return (
         <div className='garden-container'>
             <h3 className='garden-header'>Garden</h3>
@@ -15,12 +16,7 @@ export default function Garden() {
                 <Link to={ROUTES.ADD_PLANT}>Add_Plant</Link>
             </div>
             <div className='garden-card-container'>
-                <div className='garden-card'><PlantCard /></div>
-                <div className='garden-card'><PlantCard /></div>
-                <div className='garden-card'><PlantCard /></div>
-                <div className='garden-card'><PlantCard /></div>
-                <div className='garden-card'><PlantCard /></div>
-                <div className='garden-card'><PlantCard /></div>
+                {plantCards}
             </div>
         </div>
     )

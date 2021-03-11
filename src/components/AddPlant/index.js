@@ -1,4 +1,5 @@
 import TextField from '@material-ui/core/TextField';
+import Plant from '../../models/Plant';
 import React, { Component } from 'react';
 import Care from '../Care';
 import PlantImage from '../PlantImage';
@@ -10,103 +11,89 @@ export default class AddPlant extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plantName: "",
-            plantIconId: "icon1",
-            watering: false,
-            spraying: false,
-            fertilizing: false,
-            wateringFrequency: 1,
-            sprayingFrequency: 7,
-            fertilizingFrequency: 30,
-            lastWatering: this.currentDate,
-            lastSpraying: this.currentDate,
-            lastFertilizing: this.currentDate,
+            plant: new Plant(),
         }
     }
 
-    currentDate = new Date().toJSON().slice(0, 10);
+    setPlant = (plant) => {
+        this.setState({
+            plant: plant,
+        })
+    }
 
     onImgClick = (imageId) => {
-        this.setState({
-            plantIconId: imageId,
-        })
+        let plant = this.state.plant;
+        plant.imageId = imageId;
+        this.setPlant(plant);
     }
 
     onPlantNameChanged = (name) => {
-        this.setState({
-            plantName: name,
-        })
+        let plant = this.state.plant;
+        plant.name = name
+        this.setPlant(plant);
     }
 
-    onActiveChange = (type, isActive) => {
-        this.setState({
-            [type]: isActive
-        })
+    onActiveChange = (index, isActive) => {
+        let plant = this.state.plant;
+        plant.careTypes[index].isActive = isActive;
+        this.setPlant(plant);
     }
 
-    onFrequencySelected = (type, frequency) => {
-        this.setState({
-            [type]: frequency,
-        })
+    onFrequencySelected = (index, frequency) => {
+        let plant = this.state.plant;
+        plant.careTypes[index].frequency = frequency;
+        this.setPlant(plant);
     };
 
-    onLastCareChanged = (type, lastCare) => {
+    onLastCareChanged = (index, lastCare) => {
+        let plant = this.state.plant;
+        plant.careTypes[index].lastCare = new Date(lastCare);
+        this.setPlant(plant);
+    }
+
+    onSaveBtnClick = () => {
+        this.props.onPlantAdd(this.state.plant);
         this.setState({
-            [type]: lastCare,
+            plant: new Plant(),
         })
     }
 
     render() {
+        const plant = this.state.plant;
+        let cares = this.state.plant.careTypes.map((care, index) => 
+        <div className='care' key={care.name}>
+            <Care
+                title={care.name}
+                isActive={care.isActive}
+                onActiveChange={(isActive) => this.onActiveChange(index, isActive)}
+                frequency={care.frequency}
+                onFrequencySelected={(frequency) => this.onFrequencySelected(index, frequency)}
+                lastCare={care.lastCare}
+                onLastCareChanged={(lastCare) => this.onLastCareChanged(index, lastCare)}
+            />
+        </div>)
         return (
             <div className="add-plant-container">
                 <h3 className="page-header">Add Plant</h3>
                 <div className='plant-image'>
                     <PlantImage
-                        plantId={this.state.plantIconId} />
+                        plantId={plant.plantIconId} />
                 </div>
                 <div className='popup'>
-                    <Popup 
-                    onImgClick={(imageId) => this.onImgClick(imageId)}/>
+                    <Popup
+                        onImgClick={(imageId) => this.onImgClick(imageId)} />
                 </div>
                 <TextField
                     label="Plant name"
                     onInput={(event) => this.onPlantNameChanged(event.target.value)}
                     className="plant-name" />
-                <div className='watering care'>
-                    <Care
-                        title={"Watering"}
-                        isActive={this.state.watering}
-                        onActiveChange={(isActive) => this.onActiveChange("watering", isActive)}
-                        frequency={this.state.wateringFrequency}
-                        onFrequencySelected={(frequency) => this.onFrequencySelected("wateringFrequency", frequency)}
-                        lastCare={this.state.lastWatering}
-                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastWatering", lastCare)}
-                    />
-                </div>
-                <div className='spraying care'>
-                    <Care
-                        title={"Spraying"}
-                        isActive={this.state.spraying}
-                        onActiveChange={(isActive) => this.onActiveChange("spraying", isActive)}
-                        frequency={this.state.sprayingFrequency}
-                        onFrequencySelected={(frequency) => this.onFrequencySelected("sprayingFrequency", frequency)}
-                        lastCare={this.state.lastSpraying}
-                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastSpraying", lastCare)}
-                    />
-                </div>
-                <div className='fertilizing care'>
-                    <Care
-                        title={"Fertilizing"}
-                        isActive={this.state.fertilizing}
-                        onActiveChange={(isActive) => this.onActiveChange("fertilizing", isActive)}
-                        frequency={this.state.fertilizingFrequency}
-                        onFrequencySelected={(frequency) => this.onFrequencySelected("fertilizingFrequency", frequency)}
-                        lastCare={this.state.lastFertilizing}
-                        onLastCareChanged={(lastCare) => this.onLastCareChanged("lastFertilizing", lastCare)}
-                    />
+                <div className='cares'>
+                    {cares}
                 </div>
                 <div className='plant-save'>
-                    <MyButton value="Save" />
+                    <MyButton
+                        value="Save"
+                        onClick={this.onSaveBtnClick} />
                 </div>
             </div>
         )

@@ -6,9 +6,9 @@
         'plantImage'
         'popup'
         'plantName'
-        'watering'
-        'spraying'
-        'fertilizing'
+        'cares'
+        'cares'
+        'cares'
         'plantSave';
 }
 
@@ -32,16 +32,14 @@
     grid-area: plantName;
 }
 
-.watering {
-    grid-area: watering;
+.cares {
+    grid-area: cares;
+    display: grid;
 }
 
-.spraying {
-    grid-area: spraying;
-}
-
-.fertilizing {
-    grid-area: fertilizing;
+.care {
+    border: 2px solid lightgrey;
+    border-radius: 8px;
 }
 
 .plant-save {
@@ -49,10 +47,7 @@
     text-align: center;
 }
 
-.care {
-    border: 2px solid lightgrey;
-    border-radius: 8px;
-}
+
 
 @media (min-width: 768px) {
     .add-plant-container {
@@ -62,8 +57,14 @@
             'plantImage plantImage plantImage'
             'popup popup popup'
             'plantName plantName plantName'
-            'watering  spraying fertilizing'
+            'cares cares cares'
             'plantSave plantSave plantSave';
+    }
+
+    .cares {
+        grid-template-columns: auto auto auto;
+        grid-template-areas: 'care care care';
+        gap: 15px
     }
 }
 
