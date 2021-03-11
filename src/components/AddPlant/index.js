@@ -23,7 +23,7 @@ export default class AddPlant extends Component {
 
     onImgClick = (imageId) => {
         let plant = this.state.plant;
-        plant.imageId = imageId;
+        plant.plantIconId = imageId;
         this.setPlant(plant);
     }
 
@@ -85,6 +85,7 @@ export default class AddPlant extends Component {
                 </div>
                 <TextField
                     label="Plant name"
+                    value={plant.name}
                     onInput={(event) => this.onPlantNameChanged(event.target.value)}
                     className="plant-name" />
                 <div className='cares'>

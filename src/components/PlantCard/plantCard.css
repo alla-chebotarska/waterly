@@ -4,6 +4,16 @@
     padding: 10px;
 }
 
+.edit-remove-set {
+    text-align: right;
+}
+
+.plant-control  {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
 .garden-plant-image {
    text-align: center;
 }

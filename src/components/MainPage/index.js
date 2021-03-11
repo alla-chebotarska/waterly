@@ -12,13 +12,24 @@ export default function MainPage() {
 
     const [plants, setPlants] = useState([]);
 
+    const findPlantIndex = (array, id) => {
+        console.log(plants);
+        return array.findIndex(x => x.id === id);
+    }
+
+    const onDeletePlantClick = (plantId) => {
+        let indexInArray = findPlantIndex(plants, plantId);
+        plants.splice(indexInArray, 1);
+        console.log(plants);
+    }
+
     return (
         <div>
             <Header />
             <div className='main-page-container'>
                 <Route exact path={ROUTES.TODOLIST} component={ToDoList} />
                 <Route path={ROUTES.GARDEN} render={(props) => (
-                    <Garden {...props} plants={plants} />
+                    <Garden {...props} plants={plants} onDeletePlantClick={(plantId) => onDeletePlantClick(plantId)} />
                 )} />
                 <Route path={ROUTES.SETTINGS} component={Settings} />
                 <Route path={ROUTES.ADD_PLANT} render={(props) => (

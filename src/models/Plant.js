@@ -1,7 +1,7 @@
 import Care from './Care'
 
 export default class Plant {
-    id = new Date().getMilliseconds();
+    id = new Date().getTime();
     name = '';
     plantIconId = "icon1";
     constructor() {

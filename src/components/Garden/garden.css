@@ -7,6 +7,9 @@
     text-align: center;
 }
 
+.garden-add-new{
+    text-align: center;
+}
 
 @media (min-width: 768px){
     .garden-card-container{
