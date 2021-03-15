@@ -23,6 +23,17 @@ export default function MainPage() {
         setPlants([...plants]);
     }
 
+    const updatedPlants = (plant) => {
+        let indexInArray = findPlantIndex(plants, plant.id);
+        console.log(indexInArray);
+        if(indexInArray === -1){
+            setPlants([...plants, plant]);
+        }else {
+            plants[indexInArray] = plant;
+            setPlants([...plants]);
+        }      
+    }
+
     return (
         <div>
             <Header />
@@ -33,7 +44,7 @@ export default function MainPage() {
                 )} />
                 <Route path={ROUTES.SETTINGS} component={Settings} />
                 <Route path={ROUTES.ADD_PLANT} render={(props) => (
-                    <AddPlant {...props} onPlantAdd={(plant) => setPlants([...plants, plant])} />
+                    <AddPlant {...props} onPlantAdd={(plant) => updatedPlants(plant)} />
                 )} />
             </div>
         </div>

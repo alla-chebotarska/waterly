@@ -1,11 +1,15 @@
 import { Divider } from '@material-ui/core';
 import React from 'react';
-import PlantImage from '../PlantImage';
+import {
+    Link
+} from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 import edit from '../../icons/edit.svg';
 import trash from '../../icons/trash.svg';
 import AlertDialog from '../AlertDialog';
-
+import PlantImage from '../PlantImage';
 import './plantCard.css';
+
 
 export default function PlantCard(props) {
     const plant = props.plant;
@@ -28,11 +32,19 @@ export default function PlantCard(props) {
         <div className='plant-card'>
             <div className='garden-plant-image'>
                 <div className='edit-remove-set'>
-                    <img
-                        className='plant-control'
-                        src={edit}
-                        alt='edit plant icon'
-                        onClick={() => onEditPlantClick()} />
+                    <Link to={
+                        {
+                            pathname: ROUTES.ADD_PLANT,
+                            plant: plant,
+                            title: "Edit Plant",
+                        }
+                    }>
+                        <img
+                            className='plant-control'
+                            src={edit}
+                            alt='edit plant icon'
+                            onClick={() => onEditPlantClick()} />
+                    </Link>
                     <AlertDialog
                         icon={trash}
                         className='plant-control'

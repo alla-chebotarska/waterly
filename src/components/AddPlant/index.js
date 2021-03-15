@@ -15,7 +15,7 @@ export default class AddPlant extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plant: new Plant(),
+            plant: this.props.location.plant,
         }
     }
 
@@ -57,10 +57,8 @@ export default class AddPlant extends Component {
 
     onSaveBtnClick = () => {
         this.props.onPlantAdd(this.state.plant);
-        this.setState({
-            plant: new Plant(),
-        })
     }
+
 
     render() {
         const plant = this.state.plant;
@@ -78,7 +76,7 @@ export default class AddPlant extends Component {
             </div>)
         return (
             <div className="add-plant-container">
-                <h3 className="page-header">Add Plant</h3>
+                <h3 className="page-header">{this.props.location.title}</h3>
                 <div className='plant-image'>
                     <PlantImage
                         plantId={plant.plantIconId} />
@@ -91,7 +89,8 @@ export default class AddPlant extends Component {
                     label="Plant name"
                     value={plant.name}
                     onInput={(event) => this.onPlantNameChanged(event.target.value)}
-                    className="plant-name" />
+                    className="plant-name" 
+                    autoFocus/>
                 <div className='cares'>
                     {cares}
                 </div>
