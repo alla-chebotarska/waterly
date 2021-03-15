@@ -12,15 +12,15 @@ export default function MainPage() {
 
     const [plants, setPlants] = useState([]);
 
+
     const findPlantIndex = (array, id) => {
-        console.log(plants);
         return array.findIndex(x => x.id === id);
     }
 
     const onDeletePlantClick = (plantId) => {
         let indexInArray = findPlantIndex(plants, plantId);
         plants.splice(indexInArray, 1);
-        console.log(plants);
+        setPlants([...plants]);
     }
 
     return (

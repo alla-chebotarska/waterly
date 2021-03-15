@@ -3,14 +3,15 @@ import React from 'react';
 import PlantImage from '../PlantImage';
 import edit from '../../icons/edit.svg';
 import trash from '../../icons/trash.svg';
+import AlertDialog from '../AlertDialog';
 
 import './plantCard.css';
 
 export default function PlantCard(props) {
     const plant = props.plant;
 
-   const onEditPlantClick = () => {
-       let id = props.plant.id;
+    const onEditPlantClick = () => {
+        let id = props.plant.id;
         console.log(id);
     }
 
@@ -27,14 +28,16 @@ export default function PlantCard(props) {
         <div className='plant-card'>
             <div className='garden-plant-image'>
                 <div className='edit-remove-set'>
-                    <img 
-                    className='plant-control' 
-                    src={edit}
-                    onClick={() => onEditPlantClick()}/>
-                    <img 
-                    className='plant-control' 
-                    src={trash}
-                    onClick={()=> props.onDeletePlantClick(props.plant.id)}/>
+                    <img
+                        className='plant-control'
+                        src={edit}
+                        alt='edit plant icon'
+                        onClick={() => onEditPlantClick()} />
+                    <AlertDialog
+                        icon={trash}
+                        className='plant-control'
+                        plantId={props.plant.id}
+                        onDeletePlantClick={(plantId) => props.onDeletePlantClick(plantId)} />
                 </div>
                 <PlantImage plantId={plant.plantIconId} />
                 <h6>{plant.name}</h6>
