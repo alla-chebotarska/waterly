@@ -12,6 +12,7 @@
     width: 20px;
     height: 20px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .garden-plant-image {

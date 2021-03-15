@@ -1,0 +1,23 @@
+.task-card-container {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    margin: 20px 0;
+}
+
+.plant-image-container {
+    width: 100px;
+    height: 100px;
+}
+
+.task-information {
+    margin: 20px 0;
+}
+
+.care-icon-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.care-type-icon {
+    width: 20px;
+}

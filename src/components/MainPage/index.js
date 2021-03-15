@@ -26,19 +26,21 @@ export default function MainPage() {
     const updatedPlants = (plant) => {
         let indexInArray = findPlantIndex(plants, plant.id);
         console.log(indexInArray);
-        if(indexInArray === -1){
+        if (indexInArray === -1) {
             setPlants([...plants, plant]);
-        }else {
+        } else {
             plants[indexInArray] = plant;
             setPlants([...plants]);
-        }      
+        }
     }
 
     return (
         <div>
             <Header />
             <div className='main-page-container'>
-                <Route exact path={ROUTES.TODOLIST} component={ToDoList} />
+                <Route exact path={ROUTES.TODOLIST} render={(props) => (
+                    <ToDoList {...props} plants={plants} />
+                )} />
                 <Route path={ROUTES.GARDEN} render={(props) => (
                     <Garden {...props} plants={plants} onDeletePlantClick={(plantId) => onDeletePlantClick(plantId)} />
                 )} />

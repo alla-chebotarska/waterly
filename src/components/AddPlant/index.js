@@ -4,7 +4,6 @@ import {
     Link
 } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-import Plant from '../../models/Plant';
 import Care from '../Care';
 import MyButton from '../MyButton';
 import PlantImage from '../PlantImage';
