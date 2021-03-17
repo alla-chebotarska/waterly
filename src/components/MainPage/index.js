@@ -8,7 +8,7 @@ import Settings from '../Settings';
 import ToDoList from '../ToDoList';
 import './main.css';
 
-export default function MainPage() {
+export default function MainPage(props) {
 
     const [plants, setPlants] = useState([]);
 
@@ -24,14 +24,16 @@ export default function MainPage() {
     }
 
     const updatedPlants = (plant) => {
-        let indexInArray = findPlantIndex(plants, plant.id);
-        console.log(indexInArray);
-        if (indexInArray === -1) {
-            setPlants([...plants, plant]);
-        } else {
-            plants[indexInArray] = plant;
-            setPlants([...plants]);
-        }
+        props.firebase.addPlant(plant);
+        console.log(plant);
+        // let indexInArray = findPlantIndex(plants, plant.id);
+        // console.log(indexInArray);
+        // if (indexInArray === -1) {
+        //     setPlants([...plants, plant]);
+        // } else {
+        //     plants[indexInArray] = plant;
+        //     setPlants([...plants]);
+        // }
     }
 
     return (
@@ -52,3 +54,4 @@ export default function MainPage() {
         </div>
     )
 }
+

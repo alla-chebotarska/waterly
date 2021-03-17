@@ -3,15 +3,15 @@ import { BrowserRouter as Router } from "react-router-dom";
 import MainPage from '../MainPage';
 import SignIn from '../SignIn';
 
-const Content = ({ authUser }) => (
+const Content = ({firebase, authUser }) => (
     <div>
-        {authUser ? <ContentAuth /> : <ContentNonAuth />}
+        {authUser ? <ContentAuth firebase={firebase}/> : <ContentNonAuth />}
     </div>
 )
 
-const ContentAuth = () => (
+const ContentAuth = ({firebase}) => (
     <Router>
-        <MainPage />
+        <MainPage firebase={firebase}/>
     </Router>
 );
 

@@ -1,7 +1,8 @@
-import Care from './Care'
+import Care from './Care';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class Plant {
-    id = new Date().getTime();
+    id = uuidv4();
     name = '';
     plantIconId = "icon1";
     constructor() {

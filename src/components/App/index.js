@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
         <div>
-          <Content authUser={this.state.authUser}/>
+          <Content authUser={this.state.authUser} firebase={this.props.firebase}/>
         </div>
     );
   }
