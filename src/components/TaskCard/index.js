@@ -8,9 +8,6 @@ export default function TaskCard(props) {
     let careType = "Spraying";
     const lastCare = '15.03.2021';
 
-    console.log(props.plants);
-
-
     return (
         <div className="task-card-container">
             <div className='plant-image-container'>

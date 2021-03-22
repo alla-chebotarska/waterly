@@ -62,9 +62,9 @@ export default class AddPlant extends Component {
     render() {
         const plant = this.state.plant;
         let cares = this.state.plant.careTypes.map((care, index) =>
-            <div className='care' key={care.name}>
+            <div className='care' key={care.careType}>
                 <Care
-                    title={care.name}
+                    title={care.careType}
                     isActive={care.isActive}
                     onActiveChange={(isActive) => this.onActiveChange(index, isActive)}
                     frequency={care.frequency}

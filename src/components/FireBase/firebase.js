@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
+import PlantConverter from '../../models/PlantConverter';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCGrXCXvco4SHt1GRP1InlRfGPR7mdXfdQ",
@@ -18,10 +19,11 @@ class Firebase {
     firebase.initializeApp(firebaseConfig);
     this.auth = firebase.auth();
     this.db = firebase.firestore();
+    this.plantConverter = new PlantConverter();
   }
 
   addPlant(plant) {
-    this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants").doc(plant.id).set(this.plantToFirestore(plant))
+    this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants").doc(plant.id).set(this.plantConverter.plantToFirestore(plant))
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
       })
@@ -30,13 +32,8 @@ class Firebase {
       });
   }
 
-  plantToFirestore(plant) {
-    return {
-      name: plant.name,
-      id: plant.id,
-      plantIconId: plant.plantIconId,
-      creationDate: plant.creationDate,
-    }
+  getPlantsCollectionReference() {
+    return this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants");
   }
 
   signInWithGoogle() {
@@ -69,5 +66,6 @@ class Firebase {
     });
   }
 }
+
 
 export default Firebase;

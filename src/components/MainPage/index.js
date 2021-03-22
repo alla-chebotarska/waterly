@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Route } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import AddPlant from '../AddPlant';
@@ -12,15 +12,26 @@ export default function MainPage(props) {
 
     const [plants, setPlants] = useState([]);
 
+    useEffect(() => {
+        props.firebase.getPlantsCollectionReference().onSnapshot((querySnapshot) => {
+            var plants = [];
+            querySnapshot.forEach((doc) => {
+                plants.push(doc.data());
+            });
+            setPlants(plants);
+        }
+        );
+    })
 
-    const findPlantIndex = (array, id) => {
-        return array.findIndex(x => x.id === id);
-    }
+    // const findPlantIndex = (array, id) => {
+    //     return array.findIndex(x => x.id === id);
+    // }
 
     const onDeletePlantClick = (plantId) => {
-        let indexInArray = findPlantIndex(plants, plantId);
-        plants.splice(indexInArray, 1);
-        setPlants([...plants]);
+        // let indexInArray = findPlantIndex(plants, plantId);
+        // plants.splice(indexInArray, 1);
+        // setPlants([...plants]);
+
     }
 
     const updatedPlants = (plant) => {
