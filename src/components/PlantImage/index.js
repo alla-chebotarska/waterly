@@ -15,6 +15,7 @@ export const plantImagesArray = Array.from(plantImages.entries()).map(arr => { r
 export default function PlantImage(props) {
 
     let img = plantImages.get(props.plantId);
+
     if(!img) {
         img = flower;
     }

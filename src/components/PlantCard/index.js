@@ -13,10 +13,10 @@ import './plantCard.css';
 
 export default function PlantCard(props) {
     const plant = props.plant;
+    const creationDate = plant.creationDate;
 
     const onEditPlantClick = () => {
         let id = props.plant.id;
-        console.log(id);
     }
 
 
@@ -51,8 +51,10 @@ export default function PlantCard(props) {
                         plantId={props.plant.id}
                         onDeletePlantClick={(plantId) => props.onDeletePlantClick(plantId)} />
                 </div>
-                <PlantImage plantId={plant.plantIconId} />
+                <PlantImage plantId={plant.imageName} />
                 <h6>{plant.name}</h6>
+                <p>Creation date: {creationDate}</p>
+                <p>Care {plant.careTypes}</p>
                 {/* {plantCareInfo} */}
             </div>
         </div>

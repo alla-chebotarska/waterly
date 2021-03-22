@@ -36,7 +36,6 @@ export default function MainPage(props) {
 
     const updatedPlants = (plant) => {
         props.firebase.addPlant(plant);
-        console.log(plant);
         // let indexInArray = findPlantIndex(plants, plant.id);
         // console.log(indexInArray);
         // if (indexInArray === -1) {

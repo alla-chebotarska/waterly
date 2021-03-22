@@ -19,8 +19,8 @@ export default class PlantConverter{
         }
       }
 
-      plantFromFirestore(plant){
-          return new Plant();
+      plantFromFirestore(item){
+          return new Plant.fromFirebase(item);
       }
     
 }

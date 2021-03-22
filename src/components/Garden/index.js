@@ -10,6 +10,7 @@ import './garden.css';
 
 
 export default function Garden(props) {
+
     let plantCards = props.plants.map(plant =>
         <div
             key={plant.id}
