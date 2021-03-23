@@ -5,7 +5,7 @@ export default class Plant {
     id = uuidv4();
     creationDate = new Date().setHours(0, 0, 0, 0);
     name = '';
-    plantIconId = '';
+    plantIconId = 'icon1';
     constructor() {
         this.careTypes = [
             new Care("Watering", false, 1, new Date()), 
@@ -15,14 +15,17 @@ export default class Plant {
         ];
     }
 
-    static fromFirebase(item) {
-        this.id = item.id;
-        this.creationDate = item.creationDate;
-        this.name = item.name;
-        this.plantIconId = item.plantIconId;
+    static plantOf(id, creationDate, name, plantIconId, careTypes) {
+        let p = new Plant();
+        p.id = id;
+        p.name = name;
+        p.plantIconId = plantIconId;
+        p.creationDate = creationDate;
+        p.careTypes = careTypes;
+        return p;
     }
-}
 
+}
 
 
 

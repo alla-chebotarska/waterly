@@ -25,7 +25,7 @@ class Firebase {
   addPlant(plant) {
     this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants").doc(plant.id).set(this.plantConverter.plantToFirestore(plant))
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
+        console.log("Document written: ", docRef);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);

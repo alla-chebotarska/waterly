@@ -1,4 +1,4 @@
-import Care from "../components/Care";
+import Care from "./Care";
 
 export default class CareConverter {
 
@@ -6,14 +6,13 @@ export default class CareConverter {
     return {
       careId: care.careId,
       careType: care.careType,
-      color: care.color,
       daysBetwenCare: care.frequency,
       lastCare: care.lastCare.setHours(0, 0, 0, 0),
-      modelVersion: care.modelVersion,
+      isActive: care.isActive,
     }
   }
 
-  careFromFirestore(item) {
-    return new Care();
+  careFromFirestore(care) {
+    return Care.careOf(care.careId, care.careType, care.daysBetwenCare, new Date(care.lastCare), care.isActive);
   }
 }

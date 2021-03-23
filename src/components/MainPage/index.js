@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import { Route } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
+import Plant from '../../models/Plant';
+import PlantConverter from '../../models/PlantConverter';
 import AddPlant from '../AddPlant';
 import Garden from '../Garden';
 import Header from '../Header';
@@ -10,6 +12,7 @@ import './main.css';
 
 export default function MainPage(props) {
 
+    const plantConverter = new PlantConverter();
     const [plants, setPlants] = useState([]);
 
     useEffect(() => {
@@ -18,10 +21,10 @@ export default function MainPage(props) {
             querySnapshot.forEach((doc) => {
                 plants.push(doc.data());
             });
-            setPlants(plants);
+            setPlants(plants.map(item => plantConverter.plantFromFirestore(item)));
         }
         );
-    })
+    }, [])
 
     // const findPlantIndex = (array, id) => {
     //     return array.findIndex(x => x.id === id);

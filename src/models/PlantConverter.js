@@ -4,13 +4,11 @@ import CareConverter from '../models/CareConverter';
 
 export default class PlantConverter{
 
-    constructor(){
-        this.careConverter = new CareConverter();
-    }
+    careConverter = new CareConverter();
 
     plantToFirestore(plant) {
         return {
-          cares: plant.careTypes.filter(care => care.isActive).map(care => this.careConverter.careToFirestore(care)),
+          cares: plant.careTypes.map(care => this.careConverter.careToFirestore(care)),
           creationDate: plant.creationDate,
           imageName: plant.plantIconId,
           modelVersion: 0,
@@ -20,7 +18,7 @@ export default class PlantConverter{
       }
 
       plantFromFirestore(item){
-          return new Plant.fromFirebase(item);
+        let cares = item.cares.map(care => this.careConverter.careFromFirestore(care));
+        return Plant.plantOf(item.plantId, item.creationDate, item.name, item.imageName, cares);
       }
-    
 }
