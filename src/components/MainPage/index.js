@@ -26,27 +26,12 @@ export default function MainPage(props) {
         );
     }, [])
 
-    // const findPlantIndex = (array, id) => {
-    //     return array.findIndex(x => x.id === id);
-    // }
-
     const onDeletePlantClick = (plantId) => {
-        // let indexInArray = findPlantIndex(plants, plantId);
-        // plants.splice(indexInArray, 1);
-        // setPlants([...plants]);
-
+        props.firebase.deletePlant(plantId);
     }
 
     const updatedPlants = (plant) => {
         props.firebase.addPlant(plant);
-        // let indexInArray = findPlantIndex(plants, plant.id);
-        // console.log(indexInArray);
-        // if (indexInArray === -1) {
-        //     setPlants([...plants, plant]);
-        // } else {
-        //     plants[indexInArray] = plant;
-        //     setPlants([...plants]);
-        // }
     }
 
     return (

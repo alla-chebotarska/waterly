@@ -36,6 +36,15 @@ class Firebase {
     return this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants");
   }
 
+  deletePlant(plantId) {
+    console.log(plantId);
+    this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants").doc(plantId).delete().then(() => {
+      console.log("Document successfully deleted!");
+  }).catch((error) => {
+      console.error("Error removing document: ", error);
+  });
+  }
+
   signInWithGoogle() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result) => {
