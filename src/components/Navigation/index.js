@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import SignOut from '../SignOut';
 import "./navigation.css";
@@ -8,20 +8,33 @@ export default function Navigation() {
 
     return (
         <ul className='navigation'>
+            {/* <li>
+                <NavLink activeStyle={{
+                    fontWeight: "bold",
+                    color: "red"
+                }} to={ROUTES.TODOLIST}>Waterly</NavLink>
+            </li> */}
             <li>
-                <Link to={ROUTES.TODOLIST}>Waterly</Link>
+                <NavLink
+                    exact
+                    to={ROUTES.TODOLIST}
+                    activeClassName="selected"
+                    className='navigation-link'>To-Do List</NavLink>
             </li>
             <li>
-                <Link to={ROUTES.TODOLIST}>To-Do List</Link>
+                <NavLink
+                    to={ROUTES.GARDEN}
+                    activeClassName="selected" c
+                    lassName='navigation-link'>Garden</NavLink>
             </li>
             <li>
-                <Link to={ROUTES.GARDEN}>Garden</Link>
+                <NavLink
+                    to={ROUTES.SETTINGS}
+                    activeClassName="selected"
+                    className='navigation-link'>Settings</NavLink>
             </li>
-            <li>
-                <Link to={ROUTES.SETTINGS}>Settings</Link>
-            </li>
-            <li>
-                <SignOut className="active" />
+            <li className="signOut">
+                <SignOut />
             </li>
         </ul>
     )

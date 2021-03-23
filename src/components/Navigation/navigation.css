@@ -22,10 +22,18 @@
     float: right;
 }
   
-.navigation li a:hover:not(.active) {
-    background-color: #1fc49f;
+.navigation li a:hover{
+    background-color: #127E66;
   }
   
-.navigation .active {
-    color: #127E66;
+.navigation-link{
+    color: white;
   }
+
+.selected {
+  font-weight: bold;
+}
+
+.signOut {
+  cursor: pointer;
+}
