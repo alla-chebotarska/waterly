@@ -3,7 +3,6 @@ import React from 'react';
 import {
     Link
 } from 'react-router-dom';
-import { stringify } from 'uuid';
 import * as ROUTES from '../../constants/routes';
 import edit from '../../icons/edit.svg';
 import trash from '../../icons/trash.svg';
@@ -17,13 +16,13 @@ export default function PlantCard(props) {
     const creationDate = new Date(plant.creationDate).toDateString();
     
     const onEditPlantClick = () => {
-        let id = props.plant.id;
+        
     }
 
 
     const plantCareInfo = plant.careTypes.map((care) =>
         care.isActive ?
-            <section key={care.name}>
+            <section key={care.careId}>
                 <Divider />
                 <div className='plant-information'>{care.careType}: every {care.frequency} days</div>
                 <div className='plant-information'>Last: {care.lastCare.toDateString()}</div>

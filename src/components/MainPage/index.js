@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { Route } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
-import Plant from '../../models/Plant';
 import PlantConverter from '../../models/PlantConverter';
 import AddPlant from '../AddPlant';
 import Garden from '../Garden';
