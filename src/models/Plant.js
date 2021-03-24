@@ -3,10 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default class Plant {
     id = uuidv4();
-    creationDate = new Date().setHours(0, 0, 0, 0);
     name = '';
     plantIconId = 'icon1';
     constructor() {
+        let date = new Date();
+        date.setHours(0, 0, 0, 0);
+        this.creationDate = date;
         this.careTypes = [
             new Care("Watering", false, 1, new Date()), 
             new Care("Spraying", false, 7, new Date()), 

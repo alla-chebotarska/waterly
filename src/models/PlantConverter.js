@@ -9,7 +9,7 @@ export default class PlantConverter{
     plantToFirestore(plant) {
         return {
           cares: plant.careTypes.map(care => this.careConverter.careToFirestore(care)),
-          creationDate: plant.creationDate,
+          creationDate: plant.creationDate.getTime(),
           imageName: plant.plantIconId,
           modelVersion: 0,
           name: plant.name,
@@ -19,6 +19,6 @@ export default class PlantConverter{
 
       plantFromFirestore(item){
         let cares = item.cares.map(care => this.careConverter.careFromFirestore(care));
-        return Plant.plantOf(item.plantId, item.creationDate, item.name, item.imageName, cares);
+        return Plant.plantOf(item.plantId, new Date(item.creationDate), item.name, item.imageName, cares);
       }
 }

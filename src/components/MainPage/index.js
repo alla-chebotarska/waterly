@@ -1,6 +1,7 @@
-import { React, useState, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Route } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
+import Plant from '../../models/Plant';
 import PlantConverter from '../../models/PlantConverter';
 import AddPlant from '../AddPlant';
 import Garden from '../Garden';
@@ -45,7 +46,7 @@ export default function MainPage(props) {
                 )} />
                 <Route path={ROUTES.SETTINGS} component={Settings} />
                 <Route path={ROUTES.ADD_PLANT} render={(props) => (
-                    <AddPlant {...props} onPlantAdd={(plant) => updatedPlants(plant)} />
+                    <AddPlant {...props} plant={new Plant()} onPlantAdd={(plant) => updatedPlants(plant)} />
                 )} />
             </div>
         </div>

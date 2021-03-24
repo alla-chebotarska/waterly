@@ -3,21 +3,19 @@ import PlantImage from '../PlantImage';
 import sprayer from '../../icons/sprayer.svg';
 import './taskCard.css';
 
-export default function TaskCard(props) {
+export default function TaskCard({care, plant, nextCare}) {
 
-    let careType = "Spraying";
-    const lastCare = '15.03.2021';
-
+    let lastCare = new Date(care.lastCare).toDateString();
 
     return (
         <div className="task-card-container">
             <div className='plant-image-container'>
                 <PlantImage 
-                    plantId={props.plant.plantIconId}
+                    plantId={plant.plantIconId}
                 />
             </div>
             <div className='task-information'>
-                <p>{careType}</p>
+                <p>{care.careType}</p>
                 <p>Last: {lastCare}</p>
             </div>
             <div className='care-icon-container'>

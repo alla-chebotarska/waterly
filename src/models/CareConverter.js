@@ -7,7 +7,7 @@ export default class CareConverter {
       careId: care.careId,
       careType: care.careType,
       daysBetwenCare: care.frequency,
-      lastCare: care.lastCare.setHours(0, 0, 0, 0),
+      lastCare: care.lastCare.getTime(),
       isActive: care.isActive,
     }
   }

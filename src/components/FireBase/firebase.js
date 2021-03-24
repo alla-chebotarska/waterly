@@ -23,7 +23,7 @@ class Firebase {
   }
 
   addPlant(plant) {
-    this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants").doc(plant.id).set(this.plantConverter.plantToFirestore(plant))
+    this.getPlantsCollectionReference().doc(plant.id).set(this.plantConverter.plantToFirestore(plant))
       .then((docRef) => {
         console.log("Document written: ", docRef);
       })
@@ -38,11 +38,12 @@ class Firebase {
 
   deletePlant(plantId) {
     console.log(plantId);
-    this.db.collection("users").doc(this.auth.currentUser.uid).collection("plants").doc(plantId).delete().then(() => {
-      console.log("Document successfully deleted!");
-  }).catch((error) => {
-      console.error("Error removing document: ", error);
-  });
+    this.getPlantsCollectionReference().doc(plantId).delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+      }).catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   }
 
   signInWithGoogle() {

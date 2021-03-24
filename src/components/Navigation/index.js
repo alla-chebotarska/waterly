@@ -24,8 +24,8 @@ export default function Navigation() {
             <li>
                 <NavLink
                     to={ROUTES.GARDEN}
-                    activeClassName="selected" c
-                    lassName='navigation-link'>Garden</NavLink>
+                    activeClassName="selected"
+                    className='navigation-link'>Garden</NavLink>
             </li>
             <li>
                 <NavLink
