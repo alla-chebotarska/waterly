@@ -25,17 +25,33 @@ export default function ToDoList(props) {
             )
         }
     }
-    
+
     let last = null;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
         careWithPlant => {
             let show = false;
             if (last != careWithPlant.next) {
                 show = true;
-                last=careWithPlant.next;
+                last = careWithPlant.next;
+            }
+
+            const mappingDays = (days) => {
+                if (days <= -2) {
+                    return `${Math.abs(days)} days ago`;
+                } 
+                else if (days == -1) {
+                    return `${Math.abs(days)} day ago`;
+                }else if (days == 0) {
+                    return "Today";
+                } else if (days == 1){
+                    return `In ${days} day`;
+                }else {
+                    return `In ${days} days`;
+                }
             }
             return (<div key={careWithPlant.care.id}>
-                {show ? <h5>In {careWithPlant.next} days</h5> : "" }
+
+                {show ? <h5>{mappingDays(careWithPlant.next)}</h5> : ""}
                 <TaskCard plant={careWithPlant.plant} care={careWithPlant.care} nextCare={careWithPlant.next} />
                 <Divider />
             </div>)
