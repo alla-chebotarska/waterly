@@ -1,11 +1,26 @@
 import React from 'react';
 import PlantImage from '../PlantImage';
 import sprayer from '../../icons/sprayer.svg';
+import drop from '../../icons/drop.svg';
+import shovel from '../../icons/shovel.svg';
 import './taskCard.css';
 
-export default function TaskCard({care, plant, nextCare}) {
+export default function TaskCard({care, plant}) {
 
     let lastCare = new Date(care.lastCare).toDateString();
+
+    const choseCareIcon = (careType) => {
+        let careIcon = drop;
+        switch(careType){
+            case "Watering": careIcon = drop;
+            break;
+            case "Spraying": careIcon = sprayer;
+            break;
+            case "Fertilizing": careIcon = shovel;
+            break;
+        }
+        return careIcon;
+    }
 
     return (
         <div className="task-card-container">
@@ -19,7 +34,7 @@ export default function TaskCard({care, plant, nextCare}) {
                 <p>Last: {lastCare}</p>
             </div>
             <div className='care-icon-container'>
-                <img src={sprayer} className='care-type-icon' alt='care icon' />
+                <img src={choseCareIcon(care.careType)} className='care-type-icon' alt='care icon' />
             </div>
         </div>
     )

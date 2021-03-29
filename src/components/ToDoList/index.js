@@ -4,8 +4,6 @@ import TaskCard from '../TaskCard';
 
 export default function ToDoList(props) {
 
-    let dayToNextCare = 2;
-
     const calculateNextCare = (care) => {
         const dayInMiliseconds = 86400000
         const nextCareMiliseconds = care.lastCare.getTime() + care.frequency * dayInMiliseconds;
@@ -26,6 +24,7 @@ export default function ToDoList(props) {
         }
     }
 
+
     let last = null;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
         careWithPlant => {
@@ -39,11 +38,11 @@ export default function ToDoList(props) {
                 if (days <= -2) {
                     return `${Math.abs(days)} days ago`;
                 } 
-                else if (days == -1) {
+                else if (days === -1) {
                     return `${Math.abs(days)} day ago`;
                 }else if (days == 0) {
                     return "Today";
-                } else if (days == 1){
+                } else if (days === 1){
                     return `In ${days} day`;
                 }else {
                     return `In ${days} days`;
