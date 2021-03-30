@@ -18,6 +18,21 @@
     margin: 30px 0;
 }
 
+.care-information {
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.plant-name {
+    color: #1FC49F;
+}
+
+.grey-text {
+    color: grey;
+    font-weight: 400;
+}
+
 .care-type-icon {
     width: 20px;
 }
