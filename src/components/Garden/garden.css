@@ -9,7 +9,7 @@
 
 @media (min-width: 768px){
     .garden-card-container{
-        grid-template-columns: auto auto ;
+        grid-template-columns: 50% 50% ;
     }
 }
 
@@ -21,6 +21,6 @@
 
 @media (min-width: 1200px){
     .garden-card-container{
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: 25%  25% 25% 25%;
     }
 }

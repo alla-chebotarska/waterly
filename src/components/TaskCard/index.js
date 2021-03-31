@@ -39,7 +39,7 @@ export default function TaskCard({ care, plant, executeCare }) {
                     <p className="care-information">{care.careType}</p>
                     <p className="care-information plant-name"> {plant.name}</p>
                 </div>
-                <p className="grey-text">Last: {lastCare}</p>
+                <p className="secondary-text">Last: {lastCare}</p>
             </div>
             <div className='execute-care-container'><MyButton value={"Execute"} onClick={() => executeCare(plant, index)}/></div>
             <div className='care-icon-container'>

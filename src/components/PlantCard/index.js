@@ -14,17 +14,13 @@ import './plantCard.css';
 export default function PlantCard(props) {
     const plant = props.plant;
     const creationDate = new Date(plant.creationDate).toDateString();
-    
-    const onEditPlantClick = () => {
-        
-    }
-
-    const plantCareInfo = plant.careTypes.map((care) =>
+ 
+    const plantCareInfo = plant.careTypes.map((care, index) =>
         care.isActive ?
             <section key={care.careId}>
-                <Divider />
+                 {index != 0 ? <div className="plant-card-divider"><Divider  /></div> : ""}
                 <div className='plant-information'>{care.careType}: every {care.frequency} days</div>
-                <div className='plant-information'>Last: {care.lastCare.toDateString()}</div>
+                <div className='plant-information secondary-text'>Last: {care.lastCare.toDateString()}</div>
             </section> : "");
 
 
@@ -43,7 +39,7 @@ export default function PlantCard(props) {
                             className='plant-control'
                             src={edit}
                             alt='edit plant icon'
-                            onClick={() => onEditPlantClick()} />
+                            />
                     </Link>
                     <AlertDialog
                         icon={trash}
@@ -52,8 +48,8 @@ export default function PlantCard(props) {
                         onDeletePlantClick={(plantId) => props.onDeletePlantClick(plantId)} />
                 </div>
                 <PlantImage plantId={plant.plantIconId} />
-                <h6>{plant.name}</h6>
-                <p>Creation date: {creationDate}</p>
+                <h6 className="garden-plant-name">{plant.name}</h6>
+                <p className="secondary-text">Creation date: {creationDate}</p>
                 {plantCareInfo}
             </div>
         </div>

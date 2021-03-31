@@ -19,10 +19,16 @@
    text-align: center;
 }
 
-h6 {
+.garden-plant-name {
     text-align: center;
+    color: #1fc49f;
+    padding-top: 4px;
 }
 
 .plant-information {
     text-align: left;
+}
+
+.plant-card-divider {
+    margin: 5px auto;
 }
