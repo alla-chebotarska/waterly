@@ -25,8 +25,7 @@ export default function TaskCard({ care, plant, executeCare }) {
         return careIcon;
     }
 
-    let index = plant.careTypes.findIndex(item => item.careType === care.careType);
-
+    let index = plant.careTypes.findIndex(item => item.careId === care.careId);
 
     return (
         <div className="task-card-container">
