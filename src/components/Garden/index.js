@@ -19,7 +19,7 @@ export default function Garden(props) {
         </div>);
     return (
         <div className='garden-container'>
-            <h3 className='garden-header'>Garden</h3>
+            <h3>Garden</h3>
             <div className='garden-add-new'>
                 <Link to={{
                             pathname: ROUTES.ADD_PLANT,

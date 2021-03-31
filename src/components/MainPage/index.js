@@ -34,12 +34,20 @@ export default function MainPage(props) {
         props.firebase.addPlant(plant);
     }
 
+    const executeCare = (plant, careId) =>{
+        let now = new Date();
+        now.setHours(0, 0, 0, 0);
+        console.log(plant.careTypes[careId]);
+        plant.careTypes[careId].lastCare = now;
+        props.firebase.addPlant(plant);
+    }
+
     return (
         <div>
             <Header />
             <div className='main-page-container'>
                 <Route exact path={ROUTES.TODOLIST} render={(props) => (
-                    <ToDoList {...props} plants={plants} />
+                    <ToDoList {...props} plants={plants} executeCare={(plant, index) => executeCare(plant, index)} />
                 )} />
                 <Route path={ROUTES.GARDEN} render={(props) => (
                     <Garden {...props} plants={plants} onDeletePlantClick={(plantId) => onDeletePlantClick(plantId)} />

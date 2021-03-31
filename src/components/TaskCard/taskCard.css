@@ -1,6 +1,6 @@
 .task-card-container {
     display: grid;
-    grid-template-columns: 20% 70% 10%;
+    grid-template-columns: 20% 50% 20% 10%;
     margin: 20px 0;
 }
 

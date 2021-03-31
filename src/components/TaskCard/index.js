@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PlantImage from '../PlantImage';
 import sprayer from '../../icons/sprayer.svg';
 import drop from '../../icons/drop.svg';
 import shovel from '../../icons/shovel.svg';
+import MyButton from '../MyButton';
 import './taskCard.css';
 
-export default function TaskCard({ care, plant }) {
+export default function TaskCard({ care, plant, executeCare }) {
+
 
     let lastCare = new Date(care.lastCare).toDateString();
 
@@ -18,9 +20,13 @@ export default function TaskCard({ care, plant }) {
                 break;
             case "Fertilizing": careIcon = shovel;
                 break;
+            default: careIcon = shovel;
         }
         return careIcon;
     }
+
+    let index = plant.careTypes.findIndex(item => item.careType === care.careType);
+
 
     return (
         <div className="task-card-container">
@@ -36,6 +42,7 @@ export default function TaskCard({ care, plant }) {
                 </div>
                 <p className="grey-text">Last: {lastCare}</p>
             </div>
+            <div><MyButton value={"Execute"} onClick={() => executeCare(plant, index)}/></div>
             <div className='care-icon-container'>
                 <img src={choseCareIcon(care.careType)} className='care-type-icon' alt='care icon' />
             </div>

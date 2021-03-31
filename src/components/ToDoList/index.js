@@ -1,6 +1,7 @@
-import { Divider, requirePropFactory } from '@material-ui/core';
+import { Divider } from '@material-ui/core';
 import React from 'react';
 import TaskCard from '../TaskCard';
+import './toDoList.css';
 
 export default function ToDoList(props) {
 
@@ -27,32 +28,38 @@ export default function ToDoList(props) {
 
     let last = null;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
-        careWithPlant => {
-            let show = false;
+        (careWithPlant, index) => {
+            let showDate = false;
             if (last != careWithPlant.next) {
-                show = true;
+                showDate = true;
                 last = careWithPlant.next;
             }
 
             const mappingDays = (days) => {
                 if (days <= -2) {
                     return `${Math.abs(days)} days ago`;
-                } 
+                }
                 else if (days === -1) {
                     return `${Math.abs(days)} day ago`;
-                }else if (days == 0) {
+                } else if (days === 0) {
                     return "Today";
-                } else if (days === 1){
+                } else if (days === 1) {
                     return `In ${days} day`;
-                }else {
+                } else {
                     return `In ${days} days`;
                 }
             }
             return (<div key={careWithPlant.care.id}>
-
-                {show ? <h5>{mappingDays(careWithPlant.next)}</h5> : ""}
-                <TaskCard plant={careWithPlant.plant} care={careWithPlant.care} nextCare={careWithPlant.next} />
-                <Divider />
+                {showDate ?
+                    <div>
+                        {index != 0 ? <Divider /> : ""}
+                        <h5 className='care-schedule-date'>{mappingDays(careWithPlant.next)}</h5>
+                    </div> : ""}
+                <TaskCard
+                    plant={careWithPlant.plant}
+                    care={careWithPlant.care}
+                    nextCare={careWithPlant.next}
+                    executeCare={(plant, careId) => props.executeCare(plant, careId)} />
             </div>)
         }
     )
