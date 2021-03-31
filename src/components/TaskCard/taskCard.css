@@ -1,21 +1,18 @@
 .task-card-container {
     display: grid;
-    grid-template-columns: 20% 50% 20% 10%;
+    grid-template-columns: 25% 50% 25%;
+    grid: 'plantImage taskInformation careIcon'
+    'executeCare executeCare executeCare';
     margin: 20px 0;
 }
 
 .plant-image-container {
-    width: 100px;
-    height: 100px;
+    grid-area: plantImage;
 }
 
 .task-information {
     margin: 20px 0;
-}
-
-.care-icon-container {
-    text-align: center;
-    margin: 30px 0;
+    grid-area: taskInformation;
 }
 
 .care-information {
@@ -24,6 +21,16 @@
     font-weight: bold;
 }
 
+.execute-care-container {
+    text-align: center;
+    grid-area: executeCare;
+}
+
+.care-icon-container {
+    text-align: center;
+    margin: 30px 0;
+    grid-area: careIcon;
+}
 .plant-name {
     color: #1FC49F;
 }
@@ -35,4 +42,33 @@
 
 .care-type-icon {
     width: 20px;
+}
+
+@media (min-width: 576px) {
+    .task-card-container {
+        grid-template-columns: 20% 40% 25% 15%;
+        grid: 'plantImage taskInformation executeCare careIcon';
+    }
+
+    .plant-image-container {
+        text-align: center;
+    }
+
+    .execute-care-container {
+        padding-top: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .task-card-container {
+        grid-template-columns: 10% 60% 20% 10%;
+    }
+
+    .plant-image-container {
+        text-align: center;
+    }
+
+    .execute-care-container {
+        padding-top: 20px;
+    }
 }
