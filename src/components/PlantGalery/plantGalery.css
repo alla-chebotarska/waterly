@@ -2,6 +2,9 @@
     cursor: pointer;
 }
 
-.plant-galery-image:hover {
-    background-color: #e9e9e9;
+.selectedImage {
+    background-color: #CBF5EC;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }

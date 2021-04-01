@@ -7,21 +7,16 @@ import './singIn.css';
 export default function SignIn() {
     return (
         <div>
-            <div className="waterly-logo-container">
+            <div className="singIn-container">
                 <img src={leaf} alt="waterly logo" className="waterly-logo" />
-            </div>
-            <h1 className="waterly-logo-text">Waterly</h1>
-            <div className="signin-buttons-container">
-                <div className="google-signin">
-                    <FirebaseContext.Consumer>
-                        {firebase => <GoogleButton onClick={() => firebase.signInWithGoogle()}>Sign in with Google</GoogleButton>}
-                    </FirebaseContext.Consumer>
+                <h1 className="waterly-logo-text">Waterly</h1>
+                <div className="signin-buttons-container">
+                    <div className="google-signin">
+                        <FirebaseContext.Consumer>
+                            {firebase => <GoogleButton onClick={() => firebase.signInWithGoogle()}>Sign in with Google</GoogleButton>}
+                        </FirebaseContext.Consumer>
+                    </div>
                 </div>
-                {/* <FacebookProvider appId="123456789">
-                    <LoginButton>
-                        <span>Login via Facebook</span>
-                    </LoginButton>
-                </FacebookProvider> */}
             </div>
 
         </div>
