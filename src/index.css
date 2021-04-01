@@ -17,6 +17,10 @@ h3, h5 {
 
 }
 
+.center-component {
+  text-align: center;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

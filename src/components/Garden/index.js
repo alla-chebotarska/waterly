@@ -20,7 +20,7 @@ export default function Garden(props) {
     return (
         <div className='garden-container'>
             <h3>Garden</h3>
-            <div className='garden-add-new'>
+            <div className='center-component'>
                 <Link to={{
                     pathname: ROUTES.ADD_PLANT,
                     plant: new Plant(),

@@ -1,5 +1,11 @@
 import { Divider } from '@material-ui/core';
 import React from 'react';
+import {
+    Link
+} from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
+import Plant from '../../models/Plant';
+import MyButton from '../MyButton';
 import TaskCard from '../TaskCard';
 import './toDoList.css';
 
@@ -60,11 +66,11 @@ export default function ToDoList(props) {
                             {index != 0 ? <Divider /> : ""}
                             <h5 className='care-schedule-date'>{mappingDays(careWithPlant.next)}</h5>
                         </div> : ""}
-                        <TaskCard
-                            plant={careWithPlant.plant}
-                            care={careWithPlant.care}
-                            nextCare={careWithPlant.next}
-                            executeCare={(plant, careId) => props.executeCare(plant, careId)} />
+                    <TaskCard
+                        plant={careWithPlant.plant}
+                        care={careWithPlant.care}
+                        nextCare={careWithPlant.next}
+                        executeCare={(plant, careId) => props.executeCare(plant, careId)} />
                 </div>)
         }
     )
@@ -75,6 +81,15 @@ export default function ToDoList(props) {
                 <div className='empty-to-do-list'>
                     <h5>No plants in the Garden</h5>
                     <h5>There is nothing on To-Do List :)</h5>
+                    <div className='center-component'>
+                        <Link to={{
+                            pathname: ROUTES.ADD_PLANT,
+                            plant: new Plant(),
+                            title: "Add Plant",
+                        }}>
+                            <MyButton value="Add Plant" />
+                        </Link>
+                    </div>
                 </div>
                 : taskCards}
         </div>
