@@ -23,7 +23,7 @@
 }
   
 .navigation li a:hover{
-    background-color: #127E66;
+    background-color: #10ad8b;
   }
   
 .navigation-link{
@@ -32,8 +32,15 @@
 
 .selected {
   font-weight: bold;
+  background-color: #127E66;
 }
 
 .signOut {
   cursor: pointer;
+}
+
+.navigation-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
 }

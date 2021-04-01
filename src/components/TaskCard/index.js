@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PlantImage from '../PlantImage';
 import sprayer from '../../icons/sprayer.svg';
 import drop from '../../icons/drop.svg';

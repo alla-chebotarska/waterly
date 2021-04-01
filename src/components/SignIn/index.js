@@ -1,6 +1,5 @@
 import React from 'react';
 import GoogleButton from 'react-google-button';
-import { FacebookProvider, LoginButton } from 'react-facebook';
 import { FirebaseContext } from '../FireBase';
 import leaf from '../../icons/leaf.svg';
 import './singIn.css';

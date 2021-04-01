@@ -56,7 +56,7 @@
 
 @media (min-width: 768px) {
     .task-card-container {
-        grid-template-columns: 10% 60% 20% 10%;
+        grid-template-columns: 15% 55% 20% 10%;
     }
 
     .plant-image-container {

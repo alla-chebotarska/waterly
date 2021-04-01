@@ -37,7 +37,6 @@ export default function MainPage(props) {
     const executeCare = (plant, careId) =>{
         let now = new Date();
         now.setHours(0, 0, 0, 0);
-        console.log(plant.careTypes[careId]);
         plant.careTypes[careId].lastCare = now;
         props.firebase.addPlant(plant);
     }

@@ -22,16 +22,20 @@ export default function Garden(props) {
             <h3>Garden</h3>
             <div className='garden-add-new'>
                 <Link to={{
-                            pathname: ROUTES.ADD_PLANT,
-                            plant: new Plant(),
-                            title: "Add Plant",
-                        }}>
+                    pathname: ROUTES.ADD_PLANT,
+                    plant: new Plant(),
+                    title: "Add Plant",
+                }}>
                     <MyButton value="Add Plant" />
                 </Link>
             </div>
-            <div className='garden-card-container'>
-                {plantCards}
-            </div>
+            {props.plants.length === 0 ?
+                <div><h5>No plants in the garden</h5></div>
+                :
+                <div className='garden-card-container'>
+                    {plantCards}
+                </div>}
+
         </div>
     )
 }

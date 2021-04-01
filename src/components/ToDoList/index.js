@@ -29,6 +29,10 @@ export default function ToDoList(props) {
     let last = null;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
         (careWithPlant, index) => {
+            if (careWithPlant.care.isActive === false) {
+                return "";
+            }
+
             let showDate = false;
             if (last != careWithPlant.next) {
                 showDate = true;
@@ -49,24 +53,30 @@ export default function ToDoList(props) {
                     return `In ${days} days`;
                 }
             }
-            return (<div key={careWithPlant.care.id}>
-                {showDate ?
-                    <div>
-                        {index != 0 ? <Divider /> : ""}
-                        <h5 className='care-schedule-date'>{mappingDays(careWithPlant.next)}</h5>
-                    </div> : ""}
-                <TaskCard
-                    plant={careWithPlant.plant}
-                    care={careWithPlant.care}
-                    nextCare={careWithPlant.next}
-                    executeCare={(plant, careId) => props.executeCare(plant, careId)} />
-            </div>)
+            return (
+                <div key={careWithPlant.care.careId} >
+                    {showDate ?
+                        <div>
+                            {index != 0 ? <Divider /> : ""}
+                            <h5 className='care-schedule-date'>{mappingDays(careWithPlant.next)}</h5>
+                        </div> : ""}
+                        <TaskCard
+                            plant={careWithPlant.plant}
+                            care={careWithPlant.care}
+                            nextCare={careWithPlant.next}
+                            executeCare={(plant, careId) => props.executeCare(plant, careId)} />
+                </div>)
         }
     )
     return (
         <div>
             <h3>To do list</h3>
-            {taskCards}
+            {props.plants.length === 0 ?
+                <div className='empty-to-do-list'>
+                    <h5>No plants in the Garden</h5>
+                    <h5>There is nothing on To-Do List :)</h5>
+                </div>
+                : taskCards}
         </div>
     )
 }

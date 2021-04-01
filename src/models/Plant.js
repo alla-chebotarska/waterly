@@ -13,7 +13,6 @@ export default class Plant {
             new Care("Watering", false, 1, new Date()), 
             new Care("Spraying", false, 7, new Date()), 
             new Care("Fertilizing", false, 30, new Date()),
-            new Care("Test", false, 5, new Date()),
         ];
     }
 
