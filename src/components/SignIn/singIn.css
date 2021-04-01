@@ -1,0 +1,21 @@
+.waterly-logo-container{
+    text-align: center;
+    margin-top: 150px;
+}
+
+.waterly-logo {
+    width: 200px;
+    height: 200px;
+}
+
+.waterly-logo-text {
+    color: #127E66;
+    text-align: center;
+    font-size: 3.5em;
+}
+
+.google-signin {
+    max-width: 200px;
+    margin: 20px auto;
+}
+
