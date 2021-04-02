@@ -4,6 +4,7 @@ import {
     Link
 } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import Plant from '../../models/Plant';
 import Care from '../Care';
 import MyButton from '../MyButton';
 import PlantImage from '../PlantImage';
@@ -14,7 +15,7 @@ export default class AddPlant extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plant: this.props.location.plant,
+            plant: this.props.location.plant == null ? new Plant() : this.props.location.plant,
         }
     }
 

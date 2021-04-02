@@ -1,11 +1,11 @@
 .garden-card-container{
     display: grid;
-    gap: 15px;
+    gap: 2%;
 }
 
 @media (min-width: 768px){
     .garden-card-container{
-        grid-template-columns: 50% 50% ;
+        grid-template-columns: 49% 49% ;
     }
 }
 
@@ -17,6 +17,6 @@
 
 @media (min-width: 1200px){
     .garden-card-container{
-        grid-template-columns: 25%  25% 25% 25%;
+        grid-template-columns: 24%  24% 24% 24%;
     }
 }

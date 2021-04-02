@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "plant-care",
     "public": "build",
     "ignore": [
       "firebase.json",
