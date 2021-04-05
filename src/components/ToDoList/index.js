@@ -75,7 +75,7 @@ export default function ToDoList(props) {
         }
     )
     return (
-        <div>
+        <div >
             <h3>To do list</h3>
             {props.plants.length === 0 ?
                 <div className='empty-to-do-list'>
@@ -91,7 +91,7 @@ export default function ToDoList(props) {
                         </Link>
                     </div>
                 </div>
-                : taskCards}
+                : <div className='tasks-container'>{taskCards}</div>}
         </div>
     )
 }

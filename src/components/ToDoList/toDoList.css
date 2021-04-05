@@ -5,3 +5,14 @@
 .empty-to-do-list {
     margin-top: 50px;
 }
+
+.tasks-container {
+    width: 100%;
+}
+
+@media (min-width: 992px){
+    .tasks-container {
+    width: 70%;
+    margin: auto;
+}
+}
