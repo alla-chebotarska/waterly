@@ -1,10 +1,11 @@
 import React from 'react';
 import GoogleButton from 'react-google-button';
 import { FirebaseContext } from '../FireBase';
+import GuestSignIn from '../GuestSignIn';
 import leaf from '../../icons/leaf.svg';
 import './singIn.css';
 
-export default function SignIn() {
+export default function SignIn(props) {
     return (
         <div>
             <div className="singIn-container">
@@ -15,6 +16,9 @@ export default function SignIn() {
                         <FirebaseContext.Consumer>
                             {firebase => <GoogleButton onClick={() => firebase.signInWithGoogle()}>Sign in with Google</GoogleButton>}
                         </FirebaseContext.Consumer>
+                    </div>
+                    <div>
+                        <GuestSignIn onClick={() => props.alertDialogClick()} />
                     </div>
                 </div>
             </div>

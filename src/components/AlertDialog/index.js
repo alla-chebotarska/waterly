@@ -21,7 +21,7 @@ export default function AlertDialog(props) {
       <img
         className='plant-control'
         src={props.icon}
-        alt='delete plant icon'
+        alt='handle'
         onClick={handleClickOpen} />
       <Dialog
         open={open}
