@@ -18,7 +18,9 @@ export default function SignIn(props) {
                         </FirebaseContext.Consumer>
                     </div>
                     <div>
-                        <GuestSignIn onClick={() => props.alertDialogClick()} />
+                        <FirebaseContext.Consumer>
+                            {firebase => <GuestSignIn onClick={() => props.alertDialogClick()} firebase={firebase}/>}
+                        </FirebaseContext.Consumer>
                     </div>
                 </div>
             </div>
