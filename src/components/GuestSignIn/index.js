@@ -20,7 +20,6 @@ export default function GuestSignIn(props) {
     };
 
     const LogInAsGuest = () => {
-        console.log("Guest");
         props.firebase.signInAnonymously();
         handleClose();
     }
