@@ -77,11 +77,7 @@ export default class AddPlant extends Component {
         return (
             <div className="add-plant-container">
                 <h3 className="page-header">{this.props.location.title}</h3>
-                <div className='plant-image'>
-                    <PlantImage
-                        plantId={plant.plantIconId} />
-                </div>
-                <div className='popup'>
+                <div className='plant-image-popup'>
                     <Popup
                         plantIconId={plant.plantIconId}
                         onImgClick={(imageId) => this.onImgClick(imageId)} />

@@ -3,8 +3,7 @@
     gap: 15px;
     grid-template-areas: 
         'pageHeader'
-        'plantImage'
-        'popup'
+        'plantImagePopup'
         'plantName'
         'cares'
         'cares'
@@ -17,15 +16,10 @@
     
 }
 
-
-.plant-image {
-    grid-area: plantImage;
+.plant-image-popup {
+    grid-area: plantImagePopup;
     text-align: center;
-}
-
-.popup {
-    grid-area: popup;
-    text-align: center;
+    cursor: pointer;
 }
 
 .plant-name {
@@ -47,15 +41,12 @@
     text-align: center;
 }
 
-
-
 @media (min-width: 768px) {
     .add-plant-container {
         grid-template-columns: repeat(3, minmax(0, 1fr)) ;
         grid-template-areas: 
             'pageHeader pageHeader pageHeader '
-            'plantImage plantImage plantImage'
-            'popup popup popup'
+            'plantImagePopup plantImagePopup plantImagePopup'
             'plantName plantName plantName'
             'cares cares cares'
             'plantSave plantSave plantSave';
