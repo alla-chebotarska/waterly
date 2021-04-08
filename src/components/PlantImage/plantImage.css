@@ -2,14 +2,10 @@
     width: 100px;
 }
 
-.plant-image-clickable {
-    height: 120px;
-}
-
-.plant-image-clickable:hover {
+.plant-image-background:hover {
     margin: 0 auto;
     background-color: #CBF5EC;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    height: 100px;
+    width: 100px;
 }

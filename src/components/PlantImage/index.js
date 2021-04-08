@@ -23,14 +23,12 @@ export default function PlantImage(props) {
     }
     return (
         <div>
-            <div  className={props.clickable ? 'plant-image-clickable' : ''}>
                 <img
                     src={img}
                     alt="selected plant"
-                    className='plant-image'
+                    className={props.clickable ? 'plant-image plant-image-background' : 'plant-image'}
                     onClick={props.onPlantImageClick}
                 ></img>
-            </div>
         </div>
     )
 }
