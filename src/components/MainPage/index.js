@@ -15,7 +15,7 @@ import './main.css';
 export default function MainPage(props) {
 
     const plantConverter = new PlantConverter();
-    const [plants, setPlants] = useState([]);
+    const [plants, setPlants] = useState(null);
 
     useEffect(() => {
         props.firebase.getPlantsCollectionReference().onSnapshot((querySnapshot) => {

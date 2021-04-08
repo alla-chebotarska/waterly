@@ -6,7 +6,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      authUser: null,
+      authUser: "not_assigned",
     }
   }
 

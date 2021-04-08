@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import Plant from '../../models/Plant';
+import Loader from '../Loader';
 import MyButton from '../MyButton';
 import TaskCard from '../TaskCard';
 import './toDoList.css';
@@ -19,18 +20,19 @@ export default function ToDoList(props) {
     }
 
     let caresWithPlantInfo = [];
-    for (var i = 0; i < props.plants.length; ++i) {
-        for (var j = 0; j < props.plants[i].careTypes.length; ++j) {
-            caresWithPlantInfo.push(
-                {
-                    plant: props.plants[i],
-                    care: props.plants[i].careTypes[j],
-                    next: calculateNextCare(props.plants[i].careTypes[j])
-                }
-            )
+    if (props.plants) {
+        for (var i = 0; i < props.plants.length; ++i) {
+            for (var j = 0; j < props.plants[i].careTypes.length; ++j) {
+                caresWithPlantInfo.push(
+                    {
+                        plant: props.plants[i],
+                        care: props.plants[i].careTypes[j],
+                        next: calculateNextCare(props.plants[i].careTypes[j])
+                    }
+                )
+            }
         }
     }
-
 
     let last = null;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
@@ -77,7 +79,7 @@ export default function ToDoList(props) {
     return (
         <div >
             <h3>To do list</h3>
-            {props.plants.length === 0 ?
+            {!props.plants ? <Loader /> : props.plants.length === 0 ?
                 <div className='empty-to-do-list'>
                     <h5>No plants in the Garden</h5>
                     <h5>There is nothing on To-Do List :)</h5>
