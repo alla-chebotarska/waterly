@@ -76,7 +76,7 @@ export default class AddPlant extends Component {
             </div>)
         return (
             <div className="add-plant-container">
-                <h3 className="page-header">{this.props.location.title}</h3>
+                <h3 className="page-header">{this.props.location.totle ? this.props.location.title : "Add Plant"}</h3>
                 <div className='plant-image-popup'>
                     <Popup
                         plantIconId={plant.plantIconId}

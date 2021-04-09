@@ -3,7 +3,13 @@
     grid-template-columns: 25% 50% 25%;
     grid: 'plantImage taskInformation careIcon'
     'executeCare executeCare executeCare';
-    margin: 20px 0;
+    margin: 16px 0;
+    padding: 16px 0;
+}
+
+.task-card-container:hover{
+    border-radius: 10px;
+    background-color: #f5f5f5;
 }
 
 .plant-image-container {
@@ -11,7 +17,7 @@
 }
 
 .task-information {
-    margin: 20px 0;
+    margin-top: 16px;
     grid-area: taskInformation;
 }
 
