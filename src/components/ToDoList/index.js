@@ -34,6 +34,7 @@ export default function ToDoList(props) {
         }
     }
 
+
     let last = null;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
         (careWithPlant, index) => {
