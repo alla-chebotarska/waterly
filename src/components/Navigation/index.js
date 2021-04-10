@@ -35,7 +35,7 @@ export default function Navigation() {
                     to={ROUTES.SETTINGS}
                     activeClassName="selected"
                     className='navigation-link'>Settings</NavLink>
-            </li> */}
+            </li>  */}
             <li className="signOut">
                 <SignOut />
             </li>

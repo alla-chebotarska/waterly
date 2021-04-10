@@ -1,5 +1,7 @@
+import { Divider } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import ImageUpload from '../ImageUpload';
 import PlantGalery from '../PlantGalery';
 import PlantImage from '../PlantImage';
 import './popup.css';
@@ -30,6 +32,10 @@ export default function Popup(props) {
                             props.onImgClick(plantId);
                         }}
                     />
+                    <Modal.Header>
+                        <Modal.Title>Or upload your own picture</Modal.Title>
+                    </Modal.Header>
+                    <ImageUpload />
                 </Modal.Body>
             </Modal>
         </div>
