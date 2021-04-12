@@ -34,7 +34,6 @@
 
 .care-icon-container {
     text-align: center;
-    margin: 30px 0;
     grid-area: careIcon;
 }
 .plant-name {

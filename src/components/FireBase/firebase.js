@@ -37,7 +37,6 @@ class Firebase {
   }
 
   deletePlant(plantId) {
-    console.log(plantId);
     this.getPlantsCollectionReference().doc(plantId).delete()
       .then(() => {
         console.log("Document successfully deleted!");
