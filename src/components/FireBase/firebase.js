@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 import PlantConverter from '../../models/PlantConverter';
 
 const firebaseConfig = {
@@ -19,6 +20,7 @@ class Firebase {
     firebase.initializeApp(firebaseConfig);
     this.auth = firebase.auth();
     this.db = firebase.firestore();
+    this.storage = firebase.storage();
     this.plantConverter = new PlantConverter();
   }
 
@@ -75,16 +77,37 @@ class Firebase {
     });
   }
 
-  signInAnonymously(){
+  signInAnonymously() {
     this.auth.signInAnonymously()
-  .then(() => {
-    // Signed in..
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
+      .then(() => {
+        // Signed in..
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+  }
+
+  uploadFile(file, plantId) {
+
+    let userId = this.auth.currentUser.uid;
+  
+    // Create a root reference
+    var storageRef = this.storage.ref();
+
+    // Create a reference to 'mountains.jpg'
+    var ref = storageRef.child(`${userId}/${plantId}/plantIcon.jpg`);
+    var metadata = {
+      contentType: 'image/jpeg',
+    };
+    // 'file' comes from the Blob or File API
+    ref.put(file, metadata).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+      ref.getDownloadURL().then(res => {
+        console.log(res);
+      });
+    });
   }
 }
 

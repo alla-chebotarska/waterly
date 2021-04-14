@@ -80,7 +80,10 @@ export default class AddPlant extends Component {
                 <div className='plant-image-popup'>
                     <Popup
                         plantIconId={plant.plantIconId}
-                        onImgClick={(imageId) => this.onImgClick(imageId)} />
+                        onImgClick={(imageId) => this.onImgClick(imageId)}
+                        onUploadImage={(file) => {
+                            this.props.onUploadImage(file, plant.id)
+                        }} />
                 </div>
                 <TextField
                     label="Plant name"

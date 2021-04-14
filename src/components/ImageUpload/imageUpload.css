@@ -26,10 +26,6 @@ img {
     cursor: pointer;
 }
 
-.submitButton:hover {
-    background: #efefef;
-}
-
 .centerText {
     text-align: center;
     width: 500px;

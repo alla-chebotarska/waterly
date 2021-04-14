@@ -1,5 +1,3 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Alert from '@material-ui/lab/Alert';
 import { React, useEffect, useState } from 'react';
 import { Route } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
@@ -36,11 +34,15 @@ export default function MainPage(props) {
         props.firebase.addPlant(plant);
     }
 
-    const executeCare = (plant, careId) =>{
+    const executeCare = (plant, careId) => {
         let now = new Date();
         now.setHours(0, 0, 0, 0);
         plant.careTypes[careId].lastCare = now;
         props.firebase.addPlant(plant);
+    }
+
+    const onUploadImage = (file, plantId) => {
+        props.firebase.uploadFile(file, plantId);
     }
 
     return (
@@ -55,7 +57,9 @@ export default function MainPage(props) {
                 )} />
                 <Route path={ROUTES.SETTINGS} component={Settings} />
                 <Route path={ROUTES.ADD_PLANT} render={(props) => (
-                    <AddPlant {...props} plant={new Plant()} onPlantAdd={(plant) => updatedPlants(plant)} />
+                    <AddPlant {...props} plant={new Plant()}
+                        onPlantAdd={(plant) => updatedPlants(plant)} 
+                        onUploadImage = {onUploadImage}/>
                 )} />
             </div>
         </div>

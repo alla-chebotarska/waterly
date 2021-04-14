@@ -35,7 +35,13 @@ export default function Popup(props) {
                     <Modal.Header>
                         <Modal.Title>Or upload your own picture</Modal.Title>
                     </Modal.Header>
-                    <ImageUpload />
+                    <ImageUpload
+                        onImgClick={(plantId) => {
+                            handleClose();
+                            props.onImgClick(plantId);
+                        }}
+                        onUploadImage={props.onUploadImage} 
+                        />
                 </Modal.Body>
             </Modal>
         </div>
