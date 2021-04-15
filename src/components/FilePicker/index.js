@@ -8,7 +8,7 @@ export default class FilePicker extends React.Component {
         super(props);
         this.state = {
             file: '',
-            imagePreviewUrl: ''
+            imagePreviewUrl: '',
         };
     }
 
@@ -31,10 +31,20 @@ export default class FilePicker extends React.Component {
 
     render() {
         let { imagePreviewUrl } = this.state;
-        let imagePreview = null;
-        if (imagePreviewUrl) {
-            imagePreview = (<img src={imagePreviewUrl} alt="plant"/>);
+        let fileType;
+        if(this.state.file !== '') {
+            fileType = this.state.file.type;
         }
+        let imagePreview = null;
+
+        if (fileType === "image/png" || fileType === "image/jpeg") {
+            if (imagePreviewUrl) {
+                imagePreview = (<div className="imgPreview"><img src={imagePreviewUrl} alt="plant" /></div>);
+            }
+        }else{
+            imagePreview =  (<p>Please upload file with extention .png or .jpg</p>)
+        }
+
 
         return (
             <div className="previewComponent">
@@ -46,18 +56,16 @@ export default class FilePicker extends React.Component {
                             hidden
                             onChange={(e) => this.handleImageChange(e)} /></Button>
 
-                    {this.state.file ? <MyButton
+                    {this.state.file && (this.state.file.type === "image/png" || this.state.file.type === "image/jpeg") ? <MyButton
                         type="submit"
                         value='Upload Image'
                         onClick={(e) => {
                             this.handleSubmit(e);
                             this.props.onFileSelected(this.state.file, this.state.imagePreviewUrl);
                         }
-                        }/> : ""}
+                        } /> : ""}
                 </form>
-                <div className="imgPreview">
                     {imagePreview}
-                </div>
             </div>
         )
     }
