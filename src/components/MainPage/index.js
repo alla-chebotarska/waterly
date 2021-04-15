@@ -30,8 +30,12 @@ export default function MainPage(props) {
         props.firebase.deletePlant(plantId);
     }
 
-    const updatedPlants = (plant) => {
-        props.firebase.addPlant(plant);
+    const updatedPlants = (plant, file) => {
+        if (file) {
+            props.firebase.addPlantWithImageFile(plant, file);
+        } else {
+            props.firebase.addPlant(plant);
+        }
     }
 
     const executeCare = (plant, careId) => {
@@ -39,10 +43,6 @@ export default function MainPage(props) {
         now.setHours(0, 0, 0, 0);
         plant.careTypes[careId].lastCare = now;
         props.firebase.addPlant(plant);
-    }
-
-    const onUploadImage = (file, plantId) => {
-        props.firebase.uploadFile(file, plantId);
     }
 
     return (
@@ -58,8 +58,7 @@ export default function MainPage(props) {
                 <Route path={ROUTES.SETTINGS} component={Settings} />
                 <Route path={ROUTES.ADD_PLANT} render={(props) => (
                     <AddPlant {...props} plant={new Plant()}
-                        onPlantAdd={(plant) => updatedPlants(plant)} 
-                        onUploadImage = {onUploadImage}/>
+                        onPlantAdd={(plant, file) => updatedPlants(plant, file)} />
                 )} />
             </div>
         </div>

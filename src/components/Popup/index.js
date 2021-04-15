@@ -1,7 +1,6 @@
-import { Divider } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import ImageUpload from '../ImageUpload';
+import FilePicker from '../FilePicker';
 import PlantGalery from '../PlantGalery';
 import PlantImage from '../PlantImage';
 import './popup.css';
@@ -28,20 +27,19 @@ export default function Popup(props) {
                     <PlantGalery
                         plantIconId={props.plantIconId}
                         onImgClick={(plantId) => {
-                            handleClose();
                             props.onImgClick(plantId);
+                            handleClose();
                         }}
                     />
                     <Modal.Header>
                         <Modal.Title>Or upload your own picture</Modal.Title>
                     </Modal.Header>
-                    <ImageUpload
-                        onImgClick={(plantId) => {
+                    <FilePicker
+                        onFileSelected={(file, imagePreviewUrl) => {
+                            props.onFileSelected(file, imagePreviewUrl);
                             handleClose();
-                            props.onImgClick(plantId);
                         }}
-                        onUploadImage={props.onUploadImage} 
-                        />
+                    />
                 </Modal.Body>
             </Modal>
         </div>

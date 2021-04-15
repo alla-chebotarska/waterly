@@ -1,10 +1,9 @@
-import React from 'react';
-import placeholderImage from '../../plants/placeholder-image.png';
 import Button from '@material-ui/core/Button';
+import React from 'react';
 import MyButton from '../MyButton/index';
-import './imageUpload.css';
+import './filePicker.css';
 
-export default class ImageUpload extends React.Component {
+export default class FilePicker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,8 +14,6 @@ export default class ImageUpload extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        
-        console.log('handle uploading-', this.state.file.name);
     }
 
     handleImageChange = (event) => {
@@ -36,7 +33,7 @@ export default class ImageUpload extends React.Component {
         let { imagePreviewUrl } = this.state;
         let imagePreview = null;
         if (imagePreviewUrl) {
-            imagePreview = (<img src={imagePreviewUrl} />);
+            imagePreview = (<img src={imagePreviewUrl} alt="plant"/>);
         }
 
         return (
@@ -54,8 +51,7 @@ export default class ImageUpload extends React.Component {
                         value='Upload Image'
                         onClick={(e) => {
                             this.handleSubmit(e);
-                            this.props.onImgClick(this.state.imagePreviewUrl);
-                            this.props.onUploadImage(this.state.file);
+                            this.props.onFileSelected(this.state.file, this.state.imagePreviewUrl);
                         }
                         }/> : ""}
                 </form>

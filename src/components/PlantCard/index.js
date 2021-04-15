@@ -18,7 +18,7 @@ export default function PlantCard(props) {
     const plantCareInfo = plant.careTypes.map((care, index) =>
         care.isActive ?
             <section key={care.careId}>
-                 {index != 0 ? <div className="plant-card-divider"><Divider  /></div> : ""}
+                 {index !== 0 ? <div className="plant-card-divider"><Divider  /></div> : ""}
                 <div className='plant-information'>{care.careType}: every {care.frequency} days</div>
                 <div className='plant-information secondary-text'>Last: {care.lastCare.toDateString()}</div>
             </section> : "");

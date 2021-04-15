@@ -7,7 +7,6 @@ import * as ROUTES from '../../constants/routes';
 import Plant from '../../models/Plant';
 import Care from '../Care';
 import MyButton from '../MyButton';
-import PlantImage from '../PlantImage';
 import Popup from '../Popup';
 import './addPlant.css';
 
@@ -16,6 +15,7 @@ export default class AddPlant extends Component {
         super(props);
         this.state = {
             plant: this.props.location.plant == null ? new Plant() : this.props.location.plant,
+            file: null,
         }
     }
 
@@ -25,10 +25,22 @@ export default class AddPlant extends Component {
         })
     }
 
-    onImgClick = (imageId) => {
+    onImgSelected = (image) => {
         let plant = this.state.plant;
-        plant.plantIconId = imageId;
-        this.setPlant(plant);
+        plant.plantIconId = image;
+        this.setState({
+            plant: plant,
+            file: null
+        });
+    }
+
+    onFileSelected = (file, imagePreviewUrl) => {
+        let plant = this.state.plant;
+        plant.plantIconId = imagePreviewUrl;
+        this.setState({
+            plant: plant,
+            file: file,
+        })
     }
 
     onPlantNameChanged = (name) => {
@@ -56,7 +68,7 @@ export default class AddPlant extends Component {
     }
 
     onSaveBtnClick = () => {
-        this.props.onPlantAdd(this.state.plant);
+        this.props.onPlantAdd(this.state.plant, this.state.file);
     }
 
 
@@ -80,10 +92,8 @@ export default class AddPlant extends Component {
                 <div className='plant-image-popup'>
                     <Popup
                         plantIconId={plant.plantIconId}
-                        onImgClick={(imageId) => this.onImgClick(imageId)}
-                        onUploadImage={(file) => {
-                            this.props.onUploadImage(file, plant.id)
-                        }} />
+                        onImgClick={(imageId) => this.onImgSelected(imageId)}
+                        onFileSelected={this.onFileSelected} />
                 </div>
                 <TextField
                     label="Plant name"

@@ -27,7 +27,7 @@ class Firebase {
   addPlant(plant) {
     this.getPlantsCollectionReference().doc(plant.id).set(this.plantConverter.plantToFirestore(plant))
       .then((docRef) => {
-        console.log("Document written: ", docRef);
+        console.log("Document written: ");
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
@@ -83,29 +83,24 @@ class Firebase {
         // Signed in..
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
       });
   }
 
-  uploadFile(file, plantId) {
-
+  addPlantWithImageFile(plant, file) {
     let userId = this.auth.currentUser.uid;
   
     // Create a root reference
     var storageRef = this.storage.ref();
 
-    // Create a reference to 'mountains.jpg'
-    var ref = storageRef.child(`${userId}/${plantId}/plantIcon.jpg`);
+    var ref = storageRef.child(`${userId}/${plant.id}/icon.${file.name.split(".").pop()}`);
     var metadata = {
-      contentType: 'image/jpeg',
+      contentType: file.type,
     };
-    // 'file' comes from the Blob or File API
-    ref.put(file, metadata).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
-      ref.getDownloadURL().then(res => {
-        console.log(res);
+
+    ref.put(file, metadata).then(snapshot => {
+      ref.getDownloadURL().then(imageUrl => {
+        plant.imageId = imageUrl;
+        this.addPlant(plant);
       });
     });
   }

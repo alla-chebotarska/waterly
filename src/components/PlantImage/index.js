@@ -15,12 +15,17 @@ export const plantImagesArray = Array.from(plantImages.entries()).map(arr => {
 });
 
 export default function PlantImage(props) {
-
-    let img = plantImages.get(props.plantId);
+    let img;
+    if (props.plantId.startsWith("data:image") || props.plantId.startsWith("http")) {
+        img = props.plantId;
+    } else {
+        img = plantImages.get(props.plantId);
+    }
 
     if (!img) {
         img = flower;
     }
+
     return (
         <div>
                 <img

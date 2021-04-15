@@ -43,7 +43,7 @@ export default function ToDoList(props) {
             }
 
             let showDate = false;
-            if (last != careWithPlant.next) {
+            if (last !== careWithPlant.next) {
                 showDate = true;
                 last = careWithPlant.next;
             }
@@ -66,7 +66,7 @@ export default function ToDoList(props) {
                 <div key={careWithPlant.care.careId} >
                     {showDate ?
                         <div>
-                            {index != 0 ? <Divider /> : ""}
+                            {index !== 0 ? <Divider /> : ""}
                             <h5 className='care-schedule-date'>{mappingDays(careWithPlant.next)}</h5>
                         </div> : ""}
                     <TaskCard
