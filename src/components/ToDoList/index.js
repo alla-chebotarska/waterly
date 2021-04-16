@@ -82,8 +82,7 @@ export default function ToDoList(props) {
             <h3>To do list</h3>
             {!props.plants ? <Loader /> : props.plants.length === 0 ?
                 <div className='empty-to-do-list'>
-                    <h5>No plants in the Garden or no care tasks established</h5>
-                    <h5>Add new plants or schedule care for existing plants!</h5>
+                    <h5>No plants in the Garden </h5>
                     <h5>There is nothing on To-Do List :)</h5>
                     <div className='center-component'>
                         <Link to={{
@@ -95,7 +94,13 @@ export default function ToDoList(props) {
                         </Link>
                     </div>
                 </div>
-                : <div className='tasks-container'>{taskCards}</div>}
+                // : caresWithPlantInfo.length === 0 ?
+                //     <div>
+                //         <h5>No care tasks established yet</h5>
+                //         <h5>Add new plants or schedule care for existing plants!</h5>
+                //     </div> 
+                :
+                    <div className='tasks-container'>{taskCards}</div>}
         </div>
     )
 }
