@@ -15,18 +15,5 @@ img {
     height: 100px;
 }
 
-.submitButton {
-    padding: 12px;
-    margin-left: 10px;
-    background: white;
-    border: 4px solid lightgray;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 10pt;
-    cursor: pointer;
-}
 
-.centerText {
-    text-align: center;
-    width: 500px;
-}
+

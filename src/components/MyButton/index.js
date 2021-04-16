@@ -3,11 +3,11 @@ import './MyButton.css';
 
 export default function MyButton(props) {
     return (
-        <input
+        <button
             type="submit"
             className='my-btn'
-            value={props.value}
-            onClick={props.onClick}
-        />
+            onClick={props.onClick}>
+                {props.value}
+        </button>
     )
 }
