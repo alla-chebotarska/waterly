@@ -36,9 +36,11 @@ export default function ToDoList(props) {
 
 
     let last = null;
+    let notDefinedCareCounter = 0;
     let taskCards = caresWithPlantInfo.sort((a, b) => a.next - b.next).map(
         (careWithPlant, index) => {
             if (careWithPlant.care.isActive === false) {
+                notDefinedCareCounter += 1;
                 return "";
             }
 
@@ -47,7 +49,7 @@ export default function ToDoList(props) {
                 showDate = true;
                 last = careWithPlant.next;
             }
-
+        
             const mappingDays = (days) => {
                 if (days <= -2) {
                     return `${Math.abs(days)} days ago`;
@@ -77,6 +79,7 @@ export default function ToDoList(props) {
                 </div>)
         }
     )
+
     return (
         <div >
             <h3>To do list</h3>
@@ -94,11 +97,11 @@ export default function ToDoList(props) {
                         </Link>
                     </div>
                 </div>
-                // : caresWithPlantInfo.length === 0 ?
-                //     <div>
-                //         <h5>No care tasks established yet</h5>
-                //         <h5>Add new plants or schedule care for existing plants!</h5>
-                //     </div> 
+                : taskCards.length === notDefinedCareCounter ?
+                    <div>
+                        <h5>No care tasks established yet</h5>
+                        <h5>Add new plants or schedule care for existing plants!</h5>
+                    </div> 
                 :
                     <div className='tasks-container'>{taskCards}</div>}
         </div>
