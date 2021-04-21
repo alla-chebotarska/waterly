@@ -1,3 +1,7 @@
+.plant-galery-container{
+    text-align: center;
+}
+
 .plant-galery-image {
     cursor: pointer;
     width: 100px;

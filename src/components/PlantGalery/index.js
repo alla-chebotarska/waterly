@@ -7,7 +7,7 @@ export default function PlantGalery(props) {
     let selectedImage = props.plantIconId;
 
     return (
-        <div>
+        <div className='plant-galery-container'>
             {plantImagesArray.map((plant) => (
                 <img
                     key={plant.id}
